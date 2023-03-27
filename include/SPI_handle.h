@@ -7,7 +7,8 @@
 #include "CAN.h"
 
 
-#define CHIPSELECT 9
+// #define CHIPSELECT 19
+#define    MUXMODE  9
 
 
 // ----------------------------------------------------

@@ -5,12 +5,17 @@
 #include "CAN_MCP2515.h"
 
 
+
+
+
 // ------------------------------------------------
 // Initializes the SPI pins, mode, and CS
 
 
 void init_SPI()
 {
+
+    pinMode(MUXMODE, OUTPUT);
 
     CAN_MCP2515(CHIPSELECT);
 
@@ -28,7 +33,7 @@ void send_SPI(uint32_t id, uint8_t buf[])
     CAN_Frame msg;
 
     msg.id = id;
-    
+
     msg.extended = false;
 
     msg.length = 8;
