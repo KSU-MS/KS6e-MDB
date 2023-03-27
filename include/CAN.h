@@ -129,7 +129,7 @@ typedef struct __attribute__((__packed__))
   uint8_t extended : 1;   // Identifier Extension Bit (IDE)
   uint32_t fid;           // family ID
   uint8_t priority : 4;	  // Priority but only important for TX frames and then only for special uses.
-  uint8_t length : 4;     // Data Length
+  uint8_t length : 8;     // Data Length
   uint16_t timeout;       // milliseconds, zero will disable waiting
   uint8_t data[8]; 			  // Message data
 } CAN_Frame; // suffix of '_t' is reserved by POSIX for future use

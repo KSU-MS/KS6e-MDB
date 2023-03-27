@@ -28,6 +28,11 @@ void send_SPI(uint32_t id, uint8_t buf[])
     CAN_Frame msg;
 
     msg.id = id;
+    
+    msg.extended = false;
+
+    msg.length = 8;
+
 
     // Load buffer with Temperature array 
 

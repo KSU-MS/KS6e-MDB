@@ -9,13 +9,13 @@
 // Input pins for the NANO
 
 //                 A   B   C   D
-// int tempPins[] = {18, 19, 20, 21};
+int tempPins[] = {18, 19, 20, 21};
 
 
 // ---------------------------------------------------
 // Input pins for the uno
 
-int tempPins[] = {PC0, PC1, PC2, PC3};
+// int tempPins[] = {PC0, PC1, PC2, PC3};
 
 
 
