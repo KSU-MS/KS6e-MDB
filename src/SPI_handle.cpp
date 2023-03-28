@@ -15,11 +15,11 @@
 void init_SPI()
 {
 
-    pinMode(MUXMODE, OUTPUT);
+    // pinMode(MUXMODE, OUTPUT);
 
-    CAN_MCP2515(CHIPSELECT);
+    // CAN_MCP2515(CHIPSELECT);
 
-    CAN.begin(500000);
+    // CAN.begin(500000);
 
 }
 
@@ -41,10 +41,15 @@ void send_SPI(uint32_t id, uint8_t buf[])
 
     // Load buffer with Temperature array 
 
-    for (uint8_t INDEX = 0; INDEX < sizeof(buf); INDEX++)
+    for (uint8_t INDEX = 0; INDEX < CHANNELS; INDEX++)
     {
 
         msg.data[INDEX] = buf[INDEX];
+
+        // Serial.print("Data ");
+        // Serial.print(INDEX);
+        // Serial.print(": ");
+        // Serial.println(msg.data[INDEX]);
 
     }
 

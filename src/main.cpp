@@ -39,7 +39,6 @@
 #include "MDB_Labels.h"
 
 
-TempSensor batteryTemp;
 
 
 int main(void)
@@ -47,7 +46,7 @@ int main(void)
 
     Serial.begin(9600);
 
-    init_SPI();
+    //init_SPI();
 
     while(true)
     {
@@ -55,7 +54,9 @@ int main(void)
         batteryTemp.updateTemp();
         batteryTemp.AvgTemp();
 
-        send_SPI(CELL_1, batteryTemp.getAvgTemp());
+        //_delay_ms(1000);
+
+        //send_SPI(CELL_1, batteryTemp.getAvgTemp());
 
     }
 

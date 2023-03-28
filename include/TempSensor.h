@@ -73,5 +73,8 @@ public:
 };
 
 
+extern TempSensor batteryTemp;
+
+
 #endif
 
