@@ -143,12 +143,12 @@ Intended to be used with ATMEL ATMega328P with Arduino bootloader, MCP2515 Stand
 #define MCP2515_TEC       0x1C
 #define MCP2515_REC     	0x1D
 
-#define MCP2515_RXM0      0x20
+// #define MCP2515_RXM0      0x20
 #define MCP2515_RXM0SIDH	0x20
 #define MCP2515_RXM0SIDL	0x21
 #define MCP2515_RXM0EID8	0x22
 #define MCP2515_RXM0EID0	0x23
-#define MCP2515_RXM1      0x24
+// #define MCP2515_RXM1      0x24
 #define MCP2515_RXM1SIDH	0x24
 #define MCP2515_RXM1SIDL	0x25
 #define MCP2515_RXM1EID8	0x26

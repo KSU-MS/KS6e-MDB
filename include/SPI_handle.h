@@ -3,12 +3,11 @@
 #ifndef SPI_HANDLE_H
 #define SPI_HANDLE_H
 
-#include <SPI.h>
-#include "CAN.h"
+
+#include "CAN_MCP2515.h"
 
 
-// #define CHIPSELECT 19
-#define    MUXMODE  9
+#define CHIPSELECT 10
 
 
 // ----------------------------------------------------

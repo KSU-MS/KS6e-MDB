@@ -54,9 +54,6 @@ Designed to be used with ATMEL ATMega328P with Arduino bootloader, MCP2515 Stand
 
 #if defined(ARDUINO_ARCH_AVR)
 
-#include <Arduino.h>
-#include <SPI.h>
-#include "CAN.h"
 #include "CAN_MCP2515.h"
 
 ///////////////////////////////////////////////////////////////////
@@ -287,7 +284,7 @@ uint8_t CAN_MCP2515::write(uint32_t ID, uint8_t frameType, uint8_t length, uint8
   message_to_be_sent.id = ID;
   message_to_be_sent.length = length;
   message_to_be_sent.extended = frameType;
-  memcpy(message_to_be_sent.data, data, sizeof(data));
+  memcpy(message_to_be_sent.data, data, message_to_be_sent.length);
   return (write(message_to_be_sent));
 }
 
@@ -548,6 +545,7 @@ uint32_t CAN_MCP2515::getBitrate()
   CNF1 = readAddress(MCP2515_CNF1);
   CNF2 = readAddress(MCP2515_CNF2);
   CNF3 = readAddress(MCP2515_CNF3);
+
   if ((CNF2 == 0xB8) && (CNF3 == 0x05))
   {
     if (CNF1 == 0x31)
@@ -578,6 +576,7 @@ uint32_t CAN_MCP2515::getBitrate()
     {
       return 500000;
     }
+
   }
   else if ((CNF1 == 0x00) && (CNF2 == 0xD0) && (CNF3 == 0x82))
   {
@@ -587,6 +586,9 @@ uint32_t CAN_MCP2515::getBitrate()
   {
     return 0;
   }
+
+  return this->getBitrate();
+
 }
 
 //Turns RX filters/masks off. Will receive any message.

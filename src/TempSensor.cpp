@@ -1,6 +1,5 @@
 
 #include <Arduino.h>
-#include <avr/io.h>
 #include "TempSensor.h"
 #include "MDB_Labels.h"
 
@@ -9,14 +8,9 @@
 // ------------------------------------------------
 // Input pins for the NANO
 
-//                 A    B    C    D
-int tempPins[] = {PF7, PF6, PF5, PF4};
+//                 A   B   C   D
+ int tempPins[] = {A0, A1, A2, A3};
 
-
-// ---------------------------------------------------
-// Input pins for the uno
-
-//int tempPins[] = {PC0, PC1, PC2, PC3};
 
 
 
@@ -29,18 +23,14 @@ void TempSensor::updateTemp()
     for (uint8_t CHANNEL = 0; CHANNEL < CHANNELS; CHANNEL++)
     {
 
-        this->tempSensor.temp[CHANNEL] = this->data.read(tempPins[CHANNEL]);
+        this->tempSensor.temp[CHANNEL] = analogRead(tempPins[CHANNEL]);
 
         Serial.print("Data ");
         Serial.print(CHANNEL);
         Serial.print(": ");
         Serial.println(this->tempSensor.temp[CHANNEL]);
 
-        
-
     }
-
-   
 
 }
 
@@ -48,10 +38,10 @@ void TempSensor::updateTemp()
 // ----------------------------------------------------
 // Returns the temperture of a channel (A B C D)
 
-uint8_t TempSensor::getTemp(int channel)
+uint8_t *TempSensor::getTemp()
 {
 
-    return this->tempSensor.temp[channel];
+    return this->tempSensor.temp;
 
 }
 
@@ -62,31 +52,16 @@ uint8_t TempSensor::getTemp(int channel)
 void TempSensor::AvgTemp()
 {
 
-    uint8_t minTemp[CHANNELS] = { 0 };
-    uint8_t maxTemp[CHANNELS] = { 0 };
+    uint8_t avgerageTemperature = 0;
 
-    for (uint8_t CHANNEL = 0; CHANNEL < CHANNELS; CHANNEL++)
+    for (int CHANNEL = 0; CHANNEL < CHANNELS; CHANNEL++)
     {
 
-        minTemp[CHANNEL] = this->getTemp(CHANNEL); 
+        avgerageTemperature += this->tempSensor.temp[CHANNEL];
 
     }
 
-    this->updateTemp();
-
-    for (uint8_t CHANNEL = 0; CHANNEL < CHANNELS; CHANNEL++)
-    {
-
-        maxTemp[CHANNEL] = this->getTemp(CHANNEL);
-
-    }
-
-    for (uint8_t CHANNEL = 0; CHANNEL < CHANNELS; CHANNEL++)
-    {
-
-        this->tempSensor.avgTemp[CHANNEL] = (minTemp[CHANNEL] + maxTemp[CHANNEL]) / 2;
-
-    }
+    this->tempSensor.avgTemp = avgerageTemperature / CHANNELS;
 
 }
 
@@ -94,10 +69,27 @@ void TempSensor::AvgTemp()
 // ------------------------------------------------------
 // Returns an array of average temperatures
 
-uint8_t *TempSensor::getAvgTemp()
+uint8_t TempSensor::getAvgTemp()
 {
 
     return this->tempSensor.avgTemp;
 
 }
 
+
+
+uint8_t TempSensor::getMinTemp()
+{
+
+    return 0;
+
+}
+
+
+
+uint8_t TempSensor::getMaxTemp()
+{
+
+    return 0;
+
+}
