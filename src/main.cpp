@@ -30,5 +30,18 @@ void loop() {
   Serial.print(", Digital Value: ");
   Serial.println(digitalValue);
 
+<<<<<<< Updated upstream
   delay(1000);
+=======
+
+void loop()
+{
+
+    Battery_Module.updateTemp();
+
+    send_SPI(MODULE_1_A, MODULE_1_B, Battery_Module.getTempModuleHALF1(), Battery_Module.getTempModuleHALF2());
+
+    //delay(1000);
+
+>>>>>>> Stashed changes
 }
