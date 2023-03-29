@@ -15,7 +15,7 @@ int portPins[CHANNELS] = {CHANNEL1, CHANNEL2, CHANNEL3, CHANNEL4,
 
 
 // ----------------------------------------------------------
-// Enables PORTF as an output
+// Enables PORTF as an output (constructor)
 
 TempSensor::TempSensor()
 {
