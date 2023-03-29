@@ -41,7 +41,7 @@ void send_SPI(uint32_t id_1, uint32_t id_2, uint8_t buf_1[], uint8_t buf_2[])
     msg_2.length = 8;
 
 
-    // Load buffer with Temperature array 
+    // Load buffers with Temperature array 
 
     for (uint8_t INDEX = 0; INDEX < (CHANNELS / 2); INDEX++)
     {
@@ -64,7 +64,11 @@ void send_SPI(uint32_t id_1, uint32_t id_2, uint8_t buf_1[], uint8_t buf_2[])
 
     }
 
+    msg_1.data[6] = Battery_Module.getMinTempModuleHALF1();
+    msg_2.data[6] = Battery_Module.getMinTempModuleHALF2();
 
+    msg_1.data[7] = Battery_Module.getMaxTempModuleHALF1();
+    msg_2.data[7] = Battery_Module.getMaxTempModuleHALF2();
 
 
     // Send the messages through SPI
