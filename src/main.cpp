@@ -5,7 +5,57 @@ const int ANALOG_PIN = A0; // The analog pin where the temperature sensor is con
 const int NUM_CHANNELS = 16; // The number of channels on the CD4067BM96 multiplexer
 const int MUX_ADDRESS = 0x20; // The I2C address of the CD4067BM96 multiplexer
 
+<<<<<<< Updated upstream
 CD4067BM96 mux(NUM_CHANNELS, MUX_ADDRESS);
+=======
+    Code for MDB. Not sure if it works lol.
+    If I understand how the mux works then
+    it should give a four pin analog output
+    that is read and stored by the arduino
+
+    Wrote something to output to SPI but I 
+    cannot test any further at home other then
+    just look at the output through a scope.
+
+    Wrote my own Analog Read class because stupid
+    Arduino would not let me call analogRead() 
+    outside of the loop() function and I wanted
+    my main() to look a certain way. 
+
+    GET REKT ;)
+
+*/
+
+
+/*
+
+    Found a possible SPI to CAN mega library.
+    This is not mine.
+
+    Need to implement and test. :)
+
+*/
+
+
+ 
+
+#include <Arduino.h>
+
+
+#include "TempSensor.h"
+#include "SPI_handle.h"
+#include "MDB_Labels.h"
+
+
+
+
+void setup()
+{
+
+    Serial.begin(9600);
+
+    init_SPI();
+>>>>>>> Stashed changes
 
 void setup() {
   Serial.begin(9600);
