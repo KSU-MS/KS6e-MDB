@@ -8,11 +8,11 @@
         {
             "name": "PlatformIO",
             "includePath": [
-                "c:/Users/grays/Documents/PlatformIO/Projects/KS6e-MDB-GRAYSON/include",
-                "c:/Users/grays/Documents/PlatformIO/Projects/KS6e-MDB-GRAYSON/src",
+                "c:/Users/grays/OneDrive/Documents/GitHub/KS6e-MDB/include",
+                "c:/Users/grays/OneDrive/Documents/GitHub/KS6e-MDB/src",
                 "C:/Users/grays/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
                 "C:/Users/grays/.platformio/packages/framework-arduino-avr/cores/arduino",
-                "C:/Users/grays/.platformio/packages/framework-arduino-avr/variants/leonardo",
+                "C:/Users/grays/.platformio/packages/framework-arduino-avr/variants/micro",
                 "C:/Users/grays/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
                 "C:/Users/grays/.platformio/packages/framework-arduino-avr/libraries/HID/src",
                 "C:/Users/grays/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
@@ -22,11 +22,11 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "c:/Users/grays/Documents/PlatformIO/Projects/KS6e-MDB-GRAYSON/include",
-                    "c:/Users/grays/Documents/PlatformIO/Projects/KS6e-MDB-GRAYSON/src",
+                    "c:/Users/grays/OneDrive/Documents/GitHub/KS6e-MDB/include",
+                    "c:/Users/grays/OneDrive/Documents/GitHub/KS6e-MDB/src",
                     "C:/Users/grays/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
                     "C:/Users/grays/.platformio/packages/framework-arduino-avr/cores/arduino",
-                    "C:/Users/grays/.platformio/packages/framework-arduino-avr/variants/leonardo",
+                    "C:/Users/grays/.platformio/packages/framework-arduino-avr/variants/micro",
                     "C:/Users/grays/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
                     "C:/Users/grays/.platformio/packages/framework-arduino-avr/libraries/HID/src",
                     "C:/Users/grays/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
@@ -36,13 +36,13 @@
             },
             "defines": [
                 "PLATFORMIO=60106",
-                "ARDUINO_AVR_LEONARDO",
+                "ARDUINO_AVR_MICRO",
                 "F_CPU=16000000L",
                 "ARDUINO_ARCH_AVR",
                 "ARDUINO=10808",
                 "USB_VID=0x2341",
-                "USB_PID=0x8036",
-                "USB_PRODUCT=\"Arduino Leonardo\"",
+                "USB_PID=0x8037",
+                "USB_PRODUCT=\"Arduino Micro\"",
                 "USB_MANUFACTURER=\"Arduino\"",
                 "__AVR_ATmega32U4__",
                 ""
