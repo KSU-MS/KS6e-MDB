@@ -22,18 +22,18 @@
 // --------------------------------------------------
 // Channels for each CELL in a MODULE
 
-#define   CHANNEL1    0
-#define   CHANNEL2    1
-#define   CHANNEL3    2
-#define   CHANNEL4    3
-#define   CHANNEL5    4
-#define   CHANNEL6    5
-#define   CHANNEL7    6
-#define   CHANNEL8    7
-#define   CHANNEL9    8
-#define  CHANNEL10    9
-#define  CHANNEL11   10
-#define  CHANNEL12   11
+#define   CHANNEL1    B00000000
+#define   CHANNEL2    B00000001
+#define   CHANNEL3    B00000010
+#define   CHANNEL4    B00000011
+#define   CHANNEL5    B00000100
+#define   CHANNEL6    B00000101
+#define   CHANNEL7    B00000110
+#define   CHANNEL8    B00000111
+#define   CHANNEL9    B00001000
+#define  CHANNEL10    B00001001
+#define  CHANNEL11    B00001010
+#define  CHANNEL12    B00001011
 
 #define     TEMPIN    6
 
