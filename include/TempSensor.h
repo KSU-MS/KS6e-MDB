@@ -17,7 +17,7 @@
 // -------------------------------------------------
 // Number of total channels
 
-#define  CHANNELS  12
+#define   CHANNELS   12
 
 // --------------------------------------------------
 // Channels for each CELL in a MODULE
