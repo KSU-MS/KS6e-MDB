@@ -34,9 +34,11 @@
 
 #include <Arduino.h>
 
+
 #include "TempSensor.h"
 #include "SPI_handle.h"
 #include "MDB_Labels.h"
+
 
 
 
@@ -58,6 +60,8 @@ void loop()
     batteryTemp.AvgTemp();
 
     send_SPI(CELL_1, batteryTemp.getTemp());
+
+    //delay(1000);
 
 }
 

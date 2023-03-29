@@ -11,15 +11,9 @@
 void init_SPI()
 {
 
-
     SPI.begin();
 
-    //SPI.beginTransaction(SPISettings(18000000, LSBFIRST, SPI_MODE0));
-
-    //CAN_MCP2515(CHIPSELECT);
-
     CAN.begin(CAN_BPS_500K);
-
 
     pinMode(CHIPSELECT, OUTPUT);
 
@@ -44,14 +38,25 @@ void send_SPI(uint32_t id, uint8_t buf[])
 
     // Load buffer with Temperature array 
 
-    for (uint8_t INDEX = 0; INDEX < CHANNELS; INDEX++)
+    for (uint8_t INDEX = 0; INDEX < (CHANNELS / 3); INDEX++)
     {
 
         msg.data[INDEX] = buf[INDEX];
 
+        Serial.print("Data ");
+        Serial.print(INDEX);
+        Serial.print(": ");
+        Serial.print(msg.data[INDEX]);
+        Serial.println();
+
     }
 
     msg.data[4] = batteryTemp.getAvgTemp();
+
+    Serial.print("AvgTemp: ");
+    Serial.print(msg.data[4]);
+    Serial.println();
+
     msg.data[5] = batteryTemp.getMinTemp();
     msg.data[6] = batteryTemp.getMaxTemp();
 
