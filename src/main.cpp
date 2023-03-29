@@ -95,3 +95,10 @@ void loop()
 
 >>>>>>> Stashed changes
 }
+<<<<<<< Updated upstream
+=======
+
+
+
+
+>>>>>>> Stashed changes
