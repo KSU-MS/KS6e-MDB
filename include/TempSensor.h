@@ -77,6 +77,10 @@ public:
 
     void updateTemp();
 
+    void updateMinTemp();
+
+    void updateMaxTemp();
+
     uint8_t *getTempModuleHALF1();
     
     uint8_t *getTempModuleHALF2();
@@ -88,13 +92,6 @@ public:
     uint8_t getMaxTempModuleHALF1();
 
     uint8_t getMaxTempModuleHALF2();
-
-    void updateMinTemp();
-
-    void updateMaxTemp();
-
-
-
  
 };
 
