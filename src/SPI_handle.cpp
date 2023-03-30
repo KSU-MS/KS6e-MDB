@@ -14,9 +14,9 @@ void init_SPI()
 
     CAN.begin(CAN_BPS_500K);
 
-    pinMode(CHIPSELECT, OUTPUT);
+    // pinMode(CHIPSELECT, OUTPUT);
 
-    digitalWrite(CHIPSELECT, HIGH);
+    // pinMode(CHIPSELECT, HIGH);
 
 }
 
@@ -76,9 +76,9 @@ void send_SPI(uint32_t id_1, uint32_t id_2, uint8_t buf_1[], uint8_t buf_2[])
 
     // Send the messages through SPI
 
-    digitalWrite(CHIPSELECT, LOW);
+    // digitalWrite(CHIPSELECT, LOW);
 
-    delay(20);
+    // delay(20);
 
     CAN.write(msg_1);
 
@@ -86,9 +86,9 @@ void send_SPI(uint32_t id_1, uint32_t id_2, uint8_t buf_1[], uint8_t buf_2[])
 
     CAN.write(msg_2);
 
-    delay(20);
+    // delay(20);
 
-    digitalWrite(CHIPSELECT, HIGH);
+    // digitalWrite(CHIPSELECT, HIGH);
 
 }
 
