@@ -32,6 +32,9 @@ void loop()
 {
 
     Battery_Module.updateTemp();
+    
+    Battery_Module.updateMinTemp();
+    Battery_Module.updateMaxTemp();
 
     delay(500);
 

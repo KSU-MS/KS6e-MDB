@@ -43,7 +43,7 @@
 typedef struct temperature
 {
 
-    uint8_t temp[CHANNELS - 4] = { 0 };
+    uint8_t temp[8] = { 0 };
 
     uint8_t minTemp = 0;
 
@@ -80,6 +80,14 @@ public:
     uint8_t *getTempModuleHALF1();
     
     uint8_t *getTempModuleHALF2();
+
+    uint8_t getMinTempModuleHALF1();
+
+    uint8_t getMinTempModuleHALF2();
+
+    uint8_t getMaxTempModuleHALF1();
+
+    uint8_t getMaxTempModuleHALF2();
 
     void updateMinTemp();
 

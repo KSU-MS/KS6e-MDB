@@ -65,15 +65,6 @@ void TempSensor::updateTemp()
 
     }
 
-    this->updateMinTemp();
-    this->updateMaxTemp();
-
-    this->Module_HALF1.senceTemp.temp[6] = this->Module_HALF1.senceTemp.minTemp;
-    this->Module_HALF2.senceTemp.temp[6] = this->Module_HALF2.senceTemp.minTemp;
-
-    this->Module_HALF1.senceTemp.temp[7] = this->Module_HALF1.senceTemp.minTemp;
-    this->Module_HALF2.senceTemp.temp[7] = this->Module_HALF2.senceTemp.minTemp;
-
 }
 
 
@@ -83,6 +74,9 @@ void TempSensor::updateTemp()
 uint8_t *TempSensor::getTempModuleHALF1()
 {
 
+    this->Module_HALF1.senceTemp.temp[6] = this->getMinTempModuleHALF1();
+    this->Module_HALF1.senceTemp.temp[7] = this->getMaxTempModuleHALF1(); 
+
     return this->Module_HALF1.senceTemp.temp;
 
 }
@@ -90,13 +84,44 @@ uint8_t *TempSensor::getTempModuleHALF1()
 uint8_t *TempSensor::getTempModuleHALF2()
 {
 
+    this->Module_HALF2.senceTemp.temp[6] = this->getMinTempModuleHALF1();
+    this->Module_HALF2.senceTemp.temp[7] = this->getMaxTempModuleHALF2();
+
     return this->Module_HALF2.senceTemp.temp;
 
 }
 
+uint8_t TempSensor::getMinTempModuleHALF1()
+{
+
+    return this->Module_HALF1.senceTemp.minTemp;
+
+}
+
+uint8_t TempSensor::getMinTempModuleHALF2()
+{
+
+    return this->Module_HALF2.senceTemp.minTemp;
+
+}
+
+uint8_t TempSensor::getMaxTempModuleHALF1()
+{
+
+    return this->Module_HALF1.senceTemp.maxTemp;
+
+}
+
+uint8_t TempSensor::getMaxTempModuleHALF2()
+{
+
+    return this->Module_HALF2.senceTemp.maxTemp;
+    
+}
+
 
 // ---------------------------------------------------------
-// Returns the min and max temperatures for a Module half
+// Updates the min and max temperatures for a Module half
 
 void TempSensor::updateMinTemp()
 {
