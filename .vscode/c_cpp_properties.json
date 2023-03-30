@@ -8,8 +8,8 @@
         {
             "name": "PlatformIO",
             "includePath": [
-                "c:/Users/grays/Documents/GitHub/KS6e-MDB/include",
-                "c:/Users/grays/Documents/GitHub/KS6e-MDB/src",
+                "c:/Users/grays/OneDrive/Documents/GitHub/KS6e-MDB/include",
+                "c:/Users/grays/OneDrive/Documents/GitHub/KS6e-MDB/src",
                 "C:/Users/grays/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
                 "C:/Users/grays/.platformio/packages/framework-arduino-avr/cores/arduino",
                 "C:/Users/grays/.platformio/packages/framework-arduino-avr/variants/leonardo",
@@ -22,8 +22,8 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "c:/Users/grays/Documents/GitHub/KS6e-MDB/include",
-                    "c:/Users/grays/Documents/GitHub/KS6e-MDB/src",
+                    "c:/Users/grays/OneDrive/Documents/GitHub/KS6e-MDB/include",
+                    "c:/Users/grays/OneDrive/Documents/GitHub/KS6e-MDB/src",
                     "C:/Users/grays/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
                     "C:/Users/grays/.platformio/packages/framework-arduino-avr/cores/arduino",
                     "C:/Users/grays/.platformio/packages/framework-arduino-avr/variants/leonardo",

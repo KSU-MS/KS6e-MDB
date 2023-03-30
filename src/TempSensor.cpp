@@ -65,6 +65,15 @@ void TempSensor::updateTemp()
 
     }
 
+    this->updateMinTemp();
+    this->updateMaxTemp();
+
+    this->Module_HALF1.senceTemp.temp[6] = this->Module_HALF1.senceTemp.minTemp;
+    this->Module_HALF2.senceTemp.temp[6] = this->Module_HALF2.senceTemp.minTemp;
+
+    this->Module_HALF1.senceTemp.temp[7] = this->Module_HALF1.senceTemp.minTemp;
+    this->Module_HALF2.senceTemp.temp[7] = this->Module_HALF2.senceTemp.minTemp;
+
 }
 
 
@@ -89,123 +98,80 @@ uint8_t *TempSensor::getTempModuleHALF2()
 // ---------------------------------------------------------
 // Returns the min and max temperatures for a Module half
 
-void TempSensor::minTempModuleHALF1()
+void TempSensor::updateMinTemp()
 {
 
-    uint8_t minTemp = this->Module_HALF1.senceTemp.temp[CHANNEL1];
+    uint8_t minTempM1 = this->Module_HALF1.senceTemp.temp[CHANNEL1];
+    uint8_t minTempM2 = this->Module_HALF2.senceTemp.temp[CHANNEL1];
 
     for (int CHANNEL = 0; CHANNEL < (CHANNELS / 2); CHANNEL++)
     {
 
-        if (this->Module_HALF1.senceTemp.temp[CHANNEL] < minTemp)
+        if (this->Module_HALF1.senceTemp.temp[CHANNEL] < minTempM1)
         {
 
-            minTemp = this->Module_HALF1.senceTemp.temp[CHANNEL];
+            minTempM1 = this->Module_HALF1.senceTemp.temp[CHANNEL];
 
         }
 
     }
 
-    this->Module_HALF1.senceTemp.minTemp = minTemp;
-
-}
-
-
-void TempSensor::minTempModuleHALF2()
-{
-
-    uint8_t minTemp = this->Module_HALF2.senceTemp.temp[CHANNEL1];
-
     for (int CHANNEL = 0; CHANNEL < (CHANNELS / 2); CHANNEL++)
     {
 
-        if (this->Module_HALF2.senceTemp.temp[CHANNEL] < minTemp)
+        if (this->Module_HALF2.senceTemp.temp[CHANNEL] < minTempM2)
         {
 
-            minTemp = this->Module_HALF2.senceTemp.temp[CHANNEL];
+            minTempM2 = this->Module_HALF2.senceTemp.temp[CHANNEL];
 
         }
 
     }
 
-    this->Module_HALF2.senceTemp.minTemp = minTemp;
+    this->Module_HALF1.senceTemp.minTemp = minTempM1;
+    this->Module_HALF2.senceTemp.minTemp = minTempM2;
 
 }
 
 
-void TempSensor::maxTempModuleHALF1()
+void TempSensor::updateMaxTemp()
 {
 
-    uint8_t maxTemp = this->Module_HALF1.senceTemp.temp[CHANNEL1];
+    uint8_t maxTempM1 = this->Module_HALF1.senceTemp.temp[CHANNEL1];
+    uint8_t maxTempM2 = this->Module_HALF2.senceTemp.temp[CHANNEL1];
 
     for (int CHANNEL = 0; CHANNEL < (CHANNELS / 2); CHANNEL++)
     {
 
-        if (this->Module_HALF1.senceTemp.temp[CHANNEL] > maxTemp)
+        if (this->Module_HALF1.senceTemp.temp[CHANNEL] > maxTempM1)
         {
 
-            maxTemp = this->Module_HALF1.senceTemp.temp[CHANNEL];
+            maxTempM1 = this->Module_HALF1.senceTemp.temp[CHANNEL];
 
         }
 
     }
 
-    this->Module_HALF1.senceTemp.maxTemp = maxTemp;
-
-}
-
-
-void TempSensor::maxTempModuleHALF2()
-{
-
-    uint8_t maxTemp = this->Module_HALF2.senceTemp.temp[CHANNEL1];
-
     for (int CHANNEL = 0; CHANNEL < (CHANNELS / 2); CHANNEL++)
     {
 
-        if (this->Module_HALF2.senceTemp.temp[CHANNEL] > maxTemp)
+        if (this->Module_HALF2.senceTemp.temp[CHANNEL] > maxTempM2)
         {
 
-            maxTemp = this->Module_HALF2.senceTemp.temp[CHANNEL];
+            maxTempM2 = this->Module_HALF2.senceTemp.temp[CHANNEL];
 
         }
 
     }
 
-    this->Module_HALF2.senceTemp.maxTemp = maxTemp;
+    this->Module_HALF1.senceTemp.maxTemp = maxTempM1;
+    this->Module_HALF2.senceTemp.maxTemp = maxTempM2;
 
 }
 
 
-uint8_t TempSensor::getMinTempModuleHALF1()
-{
-
-    return this->Module_HALF1.senceTemp.minTemp;
-
-}
 
 
-uint8_t TempSensor::getMinTempModuleHALF2()
-{
 
-    return this->Module_HALF2.senceTemp.minTemp;
-
-}
-
-
-uint8_t TempSensor::getMaxTempModuleHALF1()
-{
-
-    return this->Module_HALF1.senceTemp.maxTemp;
-
-}
-
-
-uint8_t TempSensor::getMaxTempModuleHALF2()
-{
-
-    return this->Module_HALF2.senceTemp.maxTemp;
-
-}
 
 

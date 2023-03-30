@@ -331,7 +331,7 @@ Intended to be used with ATMEL ATMega328P with Arduino bootloader, MCP2515 Stand
 #define MCP2515_DLC2      2
 #define MCP2515_DLC1      1
 #define MCP2515_DLC0      0
-#define MCP2515_DLC       0x0F
+#define MCP2515_DLC       0xFF
 
 // CONFIGURATION REGISTER BIT DEFINITIONS.
 

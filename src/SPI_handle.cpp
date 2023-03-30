@@ -4,7 +4,6 @@
 #include "SPI_handle.h"
 
 
-
 // ------------------------------------------------
 // Initializes the SPI pins, CAN, and CS
 
@@ -43,12 +42,16 @@ void send_SPI(uint32_t id_1, uint32_t id_2, uint8_t buf_1[], uint8_t buf_2[])
 
     // Load buffers with Temperature array 
 
-    for (uint8_t INDEX = 0; INDEX < (CHANNELS / 2); INDEX++)
+    for (uint8_t INDEX = 0; INDEX < (CHANNELS - 4); INDEX++)
     {
 
         msg_1.data[INDEX] = buf_1[INDEX];
-
         msg_2.data[INDEX] = buf_2[INDEX];
+
+    }
+
+    for (uint8_t INDEX = 0; INDEX < (CHANNELS - 4); INDEX++)
+    {
 
         Serial.print("Data1 ");
         Serial.print(INDEX);
@@ -56,19 +59,19 @@ void send_SPI(uint32_t id_1, uint32_t id_2, uint8_t buf_1[], uint8_t buf_2[])
         Serial.print(msg_1.data[INDEX]);
         Serial.println();
 
-        Serial.print("Data2 ");
-        Serial.print(INDEX);
-        Serial.print(": ");
-        Serial.print(msg_2.data[INDEX]);
-        Serial.println();
-
     }
 
-    msg_1.data[6] = Battery_Module.getMinTempModuleHALF1();
-    msg_2.data[6] = Battery_Module.getMinTempModuleHALF2();
+    // for (uint8_t INDEX = 0; INDEX < (CHANNELS - 4); INDEX++)
+    // {
 
-    msg_1.data[7] = Battery_Module.getMaxTempModuleHALF1();
-    msg_2.data[7] = Battery_Module.getMaxTempModuleHALF2();
+    //     Serial.print("Data2 ");
+    //     Serial.print(INDEX);
+    //     Serial.print(": ");
+    //     Serial.print(msg_2.data[INDEX]);
+    //     Serial.println();
+
+    // }
+
 
 
     // Send the messages through SPI

@@ -22,18 +22,18 @@
 // --------------------------------------------------
 // Channels for each CELL in a MODULE
 
-#define   CHANNEL1    B00000000
-#define   CHANNEL2    B00000001
-#define   CHANNEL3    B00000010
-#define   CHANNEL4    B00000011
-#define   CHANNEL5    B00000100
-#define   CHANNEL6    B00000101
-#define   CHANNEL7    B00000110
-#define   CHANNEL8    B00000111
-#define   CHANNEL9    B00001000
-#define  CHANNEL10    B00001001
-#define  CHANNEL11    B00001010
-#define  CHANNEL12    B00001011
+#define   CHANNEL1    B0000
+#define   CHANNEL2    B0001
+#define   CHANNEL3    B0010
+#define   CHANNEL4    B0011
+#define   CHANNEL5    B0100
+#define   CHANNEL6    B0101
+#define   CHANNEL7    B0110
+#define   CHANNEL8    B0111
+#define   CHANNEL9    B1000
+#define  CHANNEL10    B1001
+#define  CHANNEL11    B1010
+#define  CHANNEL12    B1011
 
 #define     TEMPIN    A7
 
@@ -43,7 +43,7 @@
 typedef struct temperature
 {
 
-    uint8_t temp[CHANNELS / 2] = { 0 };
+    uint8_t temp[CHANNELS - 4] = { 0 };
 
     uint8_t minTemp = 0;
 
@@ -81,22 +81,13 @@ public:
     
     uint8_t *getTempModuleHALF2();
 
-    void minTempModuleHALF1();
+    void updateMinTemp();
 
-    void minTempModuleHALF2();
+    void updateMaxTemp();
 
-    void maxTempModuleHALF1();
 
-    void maxTempModuleHALF2();
-    
-    uint8_t getMinTempModuleHALF1();
 
-    uint8_t getMinTempModuleHALF2();
-
-    uint8_t getMaxTempModuleHALF1();
-
-    uint8_t getMaxTempModuleHALF2();
-
+ 
 };
 
 
