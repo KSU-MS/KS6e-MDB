@@ -35,7 +35,7 @@ void loop()
 
     send_SPI(MODULE_1_A, MODULE_1_B, Battery_Module.getTempModuleHALF1(), Battery_Module.getTempModuleHALF2());
 
-    //delay(1000);
+    delay(500);
 
 }
 

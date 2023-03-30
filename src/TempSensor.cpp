@@ -39,11 +39,11 @@ void TempSensor::updateTemp()
 
             PORTF |= portPins[CHANNEL];
 
-            delay(20);
+            // delay(20);
 
             this->Module_HALF1.senceTemp.temp[CHANNEL] = analogRead(TEMPIN);
 
-            delay(20);
+            // delay(20);
 
             PORTF &= 0x00;
 
@@ -53,11 +53,11 @@ void TempSensor::updateTemp()
 
             PORTF |= portPins[CHANNEL];
 
-            delay(20);
+            // delay(20);
 
             this->Module_HALF2.senceTemp.temp[CHANNEL - (CHANNELS / 2)] = analogRead(TEMPIN);
 
-            delay(20);
+            // delay(20);
 
             PORTF &= 0x00;
 

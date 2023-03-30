@@ -35,7 +35,7 @@
 #define  CHANNEL11    B00001010
 #define  CHANNEL12    B00001011
 
-#define     TEMPIN    6
+#define     TEMPIN    A7
 
 // --------------------------------------------------
 // Just a more organized way of storing the temps
