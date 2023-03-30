@@ -75,7 +75,7 @@ void send_SPI(uint32_t id_1, uint32_t id_2, uint8_t buf_1[], uint8_t buf_2[])
 
     digitalWrite(CHIPSELECT, LOW);
 
-    // delay(20);
+    delay(20);
 
     CAN.write(msg_1);
 
@@ -83,7 +83,7 @@ void send_SPI(uint32_t id_1, uint32_t id_2, uint8_t buf_1[], uint8_t buf_2[])
 
     CAN.write(msg_2);
 
-    // delay(20);
+    delay(20);
 
     digitalWrite(CHIPSELECT, HIGH);
 

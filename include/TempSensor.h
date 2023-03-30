@@ -81,6 +81,14 @@ public:
     
     uint8_t *getTempModuleHALF2();
 
+    void minTempModuleHALF1();
+
+    void minTempModuleHALF2();
+
+    void maxTempModuleHALF1();
+
+    void maxTempModuleHALF2();
+    
     uint8_t getMinTempModuleHALF1();
 
     uint8_t getMinTempModuleHALF2();

@@ -39,11 +39,11 @@ void TempSensor::updateTemp()
 
             PORTF |= portPins[CHANNEL];
 
-            // delay(20);
+            delay(20);
 
             this->Module_HALF1.senceTemp.temp[CHANNEL] = analogRead(TEMPIN);
 
-            // delay(20);
+            delay(20);
 
             PORTF &= 0x00;
 
@@ -53,11 +53,11 @@ void TempSensor::updateTemp()
 
             PORTF |= portPins[CHANNEL];
 
-            // delay(20);
+            delay(20);
 
             this->Module_HALF2.senceTemp.temp[CHANNEL - (CHANNELS / 2)] = analogRead(TEMPIN);
 
-            // delay(20);
+            delay(20);
 
             PORTF &= 0x00;
 
@@ -89,7 +89,7 @@ uint8_t *TempSensor::getTempModuleHALF2()
 // ---------------------------------------------------------
 // Returns the min and max temperatures for a Module half
 
-uint8_t TempSensor::getMinTempModuleHALF1()
+void TempSensor::minTempModuleHALF1()
 {
 
     uint8_t minTemp = this->Module_HALF1.senceTemp.temp[CHANNEL1];
@@ -106,12 +106,12 @@ uint8_t TempSensor::getMinTempModuleHALF1()
 
     }
 
-    return minTemp;
+    this->Module_HALF1.senceTemp.minTemp = minTemp;
 
 }
 
 
-uint8_t TempSensor::getMinTempModuleHALF2()
+void TempSensor::minTempModuleHALF2()
 {
 
     uint8_t minTemp = this->Module_HALF2.senceTemp.temp[CHANNEL1];
@@ -128,12 +128,12 @@ uint8_t TempSensor::getMinTempModuleHALF2()
 
     }
 
-    return minTemp;
+    this->Module_HALF2.senceTemp.minTemp = minTemp;
 
 }
 
 
-uint8_t TempSensor::getMaxTempModuleHALF1()
+void TempSensor::maxTempModuleHALF1()
 {
 
     uint8_t maxTemp = this->Module_HALF1.senceTemp.temp[CHANNEL1];
@@ -150,12 +150,12 @@ uint8_t TempSensor::getMaxTempModuleHALF1()
 
     }
 
-    return maxTemp;
+    this->Module_HALF1.senceTemp.maxTemp = maxTemp;
 
 }
 
 
-uint8_t TempSensor::getMaxTempModuleHALF2()
+void TempSensor::maxTempModuleHALF2()
 {
 
     uint8_t maxTemp = this->Module_HALF2.senceTemp.temp[CHANNEL1];
@@ -172,7 +172,40 @@ uint8_t TempSensor::getMaxTempModuleHALF2()
 
     }
 
-    return maxTemp;
+    this->Module_HALF2.senceTemp.maxTemp = maxTemp;
 
 }
+
+
+uint8_t TempSensor::getMinTempModuleHALF1()
+{
+
+    return this->Module_HALF1.senceTemp.minTemp;
+
+}
+
+
+uint8_t TempSensor::getMinTempModuleHALF2()
+{
+
+    return this->Module_HALF2.senceTemp.minTemp;
+
+}
+
+
+uint8_t TempSensor::getMaxTempModuleHALF1()
+{
+
+    return this->Module_HALF1.senceTemp.maxTemp;
+
+}
+
+
+uint8_t TempSensor::getMaxTempModuleHALF2()
+{
+
+    return this->Module_HALF2.senceTemp.maxTemp;
+
+}
+
 
