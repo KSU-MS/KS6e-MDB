@@ -5,7 +5,6 @@
 #include "MDB_Labels.h"
 
 
-
 // ---------------------------------------------------------------------
 // Channel Identities in a array
 
@@ -20,9 +19,10 @@ uint8_t portPins[CHANNELS] = {CHANNEL1,  CHANNEL2,  CHANNEL3, CHANNEL4,
 TempSensor::TempSensor()
 {
 
-    DDRF &= 0x00;
+    DDRF &= ~(0x0F << 4);
 
 }
+
 
 
 // ------------------------------------------------------------------------
@@ -45,7 +45,7 @@ void TempSensor::updateTemp()
 
             delay(20);
 
-            PORTF &= 0x00;
+            PORTF &= ~(0x0F << 4);
 
         }
         else if (CHANNEL >= (CHANNELS / 2))
@@ -59,7 +59,7 @@ void TempSensor::updateTemp()
 
             delay(20);
 
-            PORTF &= 0x00;
+            PORTF &= ~(0x0F << 4);
 
         }
 
