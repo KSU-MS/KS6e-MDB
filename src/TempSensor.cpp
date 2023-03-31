@@ -24,6 +24,7 @@ TempSensor::TempSensor()
 }
 
 
+
 // ------------------------------------------------------------------------
 // Updates the temps from each pins into an array
 
@@ -40,7 +41,7 @@ void TempSensor::updateTemp()
 
             delay(40);
 
-            this->Module_HALF1.senceTemp.temp[CHANNEL] = analogRead(TEMPIN);
+            this->Module_HALF1.senceTemp.temp[CHANNEL] = analogRead(TEMPIN) / 7;
 
             delay(20);
 
@@ -54,7 +55,7 @@ void TempSensor::updateTemp()
 
             delay(40);
 
-            this->Module_HALF2.senceTemp.temp[CHANNEL - (CHANNELS / 2)] = analogRead(TEMPIN);
+            this->Module_HALF2.senceTemp.temp[CHANNEL - (CHANNELS / 2)] = analogRead(TEMPIN) / 7;
 
             delay(20);
 

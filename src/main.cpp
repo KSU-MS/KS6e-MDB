@@ -21,9 +21,12 @@
 void setup()
 {
 
-    Serial.begin(9600);
+    //Serial.begin(9600);
 
     init_SPI();
+
+    //while (!Serial);
+    
 
 }
 
