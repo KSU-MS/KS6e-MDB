@@ -9,9 +9,9 @@
 // ---------------------------------------------------------------------
 // Channel Identities in a array
 
-int portPins[CHANNELS] = {CHANNEL1, CHANNEL2, CHANNEL3, CHANNEL4, 
-                          CHANNEL5, CHANNEL6, CHANNEL7, CHANNEL8,
-                          CHANNEL9, CHANNEL10, CHANNEL11, CHANNEL12};
+uint8_t portPins[CHANNELS] = {CHANNEL1,  CHANNEL2,  CHANNEL3, CHANNEL4, 
+                              CHANNEL5,  CHANNEL6,  CHANNEL7, CHANNEL8,
+                              CHANNEL9, CHANNEL10, CHANNEL11, CHANNEL12};
 
 
 // ---------------------------------------------------------------------
@@ -20,7 +20,7 @@ int portPins[CHANNELS] = {CHANNEL1, CHANNEL2, CHANNEL3, CHANNEL4,
 TempSensor::TempSensor()
 {
 
-    DDRF = 0x00;
+    DDRF &= 0x00;
 
 }
 
@@ -31,15 +31,15 @@ TempSensor::TempSensor()
 void TempSensor::updateTemp()
 {
 
-    for (uint8_t CHANNEL = 0; CHANNEL < CHANNELS; CHANNEL++)
+    for (int CHANNEL = 0; CHANNEL < CHANNELS; CHANNEL++)
     {
 
         if (CHANNEL < (CHANNELS / 2))
         {
 
-            PORTF |= portPins[CHANNEL];
+            PORTF |= (portPins[CHANNEL] << 4);
 
-            delay(20);
+            delay(40);
 
             this->Module_HALF1.senceTemp.temp[CHANNEL] = analogRead(TEMPIN);
 
@@ -51,9 +51,9 @@ void TempSensor::updateTemp()
         else if (CHANNEL >= (CHANNELS / 2))
         {
 
-            PORTF |= portPins[CHANNEL];
+            PORTF |= (portPins[CHANNEL] << 4);
 
-            delay(20);
+            delay(40);
 
             this->Module_HALF2.senceTemp.temp[CHANNEL - (CHANNELS / 2)] = analogRead(TEMPIN);
 

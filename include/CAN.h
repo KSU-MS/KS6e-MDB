@@ -103,10 +103,16 @@ DATE		VER		WHO			WHAT
     defined(__AVR_AT90CAN64__) || \
     defined(__AVR_AT90CAN128__)
 #define CAN_CONTROLLER_AT90CAN
+
+/*
+
 // Not sure if code will be different for these CPUs
-//#elif defined(__AVR_ATmega32C1__) || defined(__AVR_ATmega64C1__) || \
+#elif defined(__AVR_ATmega32C1__) || defined(__AVR_ATmega64C1__) || \
       defined(__AVR_ATmega16M1__) || defined(__AVR_ATmega32M1__) || \
       defined(__AVR_ATmega64M1__)
+
+*/
+
 #else
 #define CAN_CONTROLLER_MCP2515
 #endif // defined(ARDUINO_ARCH_AVR)
