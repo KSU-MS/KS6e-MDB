@@ -42,49 +42,51 @@ void send_SPI(uint32_t id_1, uint32_t id_2, uint8_t buf_1[], uint8_t buf_2[])
 
     // Load buffers with Temperature array 
 
-    // for (uint8_t INDEX = 0; INDEX < (CHANNELS - 4); INDEX++)
-    // {
+    for (uint8_t INDEX = 0; INDEX < (CHANNELS - 4); INDEX++)
+    {
 
-    //     msg_1.data[INDEX] = buf_1[INDEX];
-    //     msg_2.data[INDEX] = buf_2[INDEX];
+        msg_1.data[INDEX] = buf_1[INDEX];
+        msg_2.data[INDEX] = buf_2[INDEX];
 
-    // }
+    }
 
-    // for (uint8_t INDEX = 0; INDEX < (CHANNELS / 2); INDEX++)
-    // {
+#if DEBUG
 
-    //     Serial.print("Data1 ");
-    //     Serial.print(INDEX);
-    //     Serial.print(": ");
-    //     Serial.print(msg_1.data[INDEX]);
-    //     Serial.println();
+    for (uint8_t INDEX = 0; INDEX < (CHANNELS / 2); INDEX++)
+    {
 
-    // }
+        Serial.print("Data1 ");
+        Serial.print(INDEX);
+        Serial.print(": ");
+        Serial.print(msg_1.data[INDEX]);
+        Serial.println();
 
-    // Serial.print("Min 1: ");
-    // Serial.println(msg_1.data[6]);
+    }
 
-    // Serial.print("Max 1: ");
-    // Serial.println(msg_1.data[7]);
+    Serial.print("Min 1: ");
+    Serial.println(msg_1.data[6]);
 
-    // for (uint8_t INDEX = 0; INDEX < (CHANNELS / 2); INDEX++)
-    // {
+    Serial.print("Max 1: ");
+    Serial.println(msg_1.data[7]);
 
-    //     Serial.print("Data2 ");
-    //     Serial.print(INDEX);
-    //     Serial.print(": ");
-    //     Serial.print(msg_2.data[INDEX]);
-    //     Serial.println();
+    for (uint8_t INDEX = 0; INDEX < (CHANNELS / 2); INDEX++)
+    {
 
-    // }
+        Serial.print("Data2 ");
+        Serial.print(INDEX);
+        Serial.print(": ");
+        Serial.print(msg_2.data[INDEX]);
+        Serial.println();
 
-    // Serial.print("Min 2: ");
-    // Serial.println(msg_2.data[6]);
+    }
 
-    // Serial.print("Max 2: ");
-    // Serial.println(msg_2.data[7]);
+    Serial.print("Min 2: ");
+    Serial.println(msg_2.data[6]);
 
+    Serial.print("Max 2: ");
+    Serial.println(msg_2.data[7]);
 
+#endif
 
 
     // Send the messages through SPI

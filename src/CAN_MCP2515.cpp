@@ -10,7 +10,7 @@
     GNU General Public License for more details.
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-Acknowledgements: 
+Acknowledgements:
 Fabian Greif for the initial MCP2515 library
   http://www.kreatives-chaos.com/artikel/universelle-can-bibliothek
   as well as his updates at https://github.com/dergraaf/avr-can-lib
