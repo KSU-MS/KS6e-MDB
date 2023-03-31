@@ -36,11 +36,9 @@ void loop()
     Battery_Module.updateMinTemp();
     Battery_Module.updateMaxTemp();
 
-    delay(500);
+    delay(50);
 
     send_SPI(MODULE_1_A, MODULE_1_B, Battery_Module.getTempModuleHALF1(), Battery_Module.getTempModuleHALF2());
-
-    delay(500);
 
 }
 

@@ -24,7 +24,6 @@ TempSensor::TempSensor()
 }
 
 
-
 // ------------------------------------------------------------------------
 // Updates the temps from each pins into an array
 
