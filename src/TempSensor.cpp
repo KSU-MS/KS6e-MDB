@@ -41,7 +41,7 @@ void TempSensor::updateTemp()
 
             delay(40);
 
-            this->Module_HALF1.senceTemp.temp[CHANNEL] = analogRead(TEMPIN) / 7;
+            this->Module_HALF1.senceTemp.temp[CHANNEL] = analogRead(TEMPIN);
 
             delay(20);
 
@@ -55,7 +55,7 @@ void TempSensor::updateTemp()
 
             delay(40);
 
-            this->Module_HALF2.senceTemp.temp[CHANNEL - (CHANNELS / 2)] = analogRead(TEMPIN) / 7;
+            this->Module_HALF2.senceTemp.temp[CHANNEL - (CHANNELS / 2)] = analogRead(TEMPIN);
 
             delay(20);
 
