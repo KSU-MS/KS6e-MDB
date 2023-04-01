@@ -11,8 +11,7 @@
 
 
 // ----------------------------------------------------
-// Functions for SPI (Maybe they work lol)
-
+// Functions for SPI
 
 void init_SPI();
 
