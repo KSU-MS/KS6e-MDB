@@ -1,29 +1,38 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
 {
     "configurations": [
         {
             "name": "PlatformIO",
             "includePath": [
-                "C:\\Users\\jdsil\\Documents\\GitHub\\KS6e-MDB\\**",
+                "C:/Users/jdsil/Documents/GitHub/KS6e-MDB/include",
+                "C:/Users/jdsil/Documents/GitHub/KS6e-MDB/src",
                 "C:/Users/jdsil/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                "C:/Users/jdsil/Documents/GitHub/KS6e-MDB/.pio/libdeps/micro/Metro-Arduino-Wiring",
                 "C:/Users/jdsil/.platformio/packages/framework-arduino-avr/cores/arduino",
                 "C:/Users/jdsil/.platformio/packages/framework-arduino-avr/variants/micro",
                 "C:/Users/jdsil/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
                 "C:/Users/jdsil/.platformio/packages/framework-arduino-avr/libraries/HID/src",
                 "C:/Users/jdsil/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
-                "C:/Users/jdsil/.platformio/packages/framework-arduino-avr/libraries/Wire/src"
+                "C:/Users/jdsil/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                ""
             ],
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "c:/Users/grays/OneDrive/Documents/GitHub/KS6e-MDB/include",
-                    "c:/Users/grays/OneDrive/Documents/GitHub/KS6e-MDB/src",
-                    "C:/Users/grays/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
-                    "C:/Users/grays/.platformio/packages/framework-arduino-avr/cores/arduino",
-                    "C:/Users/grays/.platformio/packages/framework-arduino-avr/variants/micro",
-                    "C:/Users/grays/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
-                    "C:/Users/grays/.platformio/packages/framework-arduino-avr/libraries/HID/src",
-                    "C:/Users/grays/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
-                    "C:/Users/grays/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                    "C:/Users/jdsil/Documents/GitHub/KS6e-MDB/include",
+                    "C:/Users/jdsil/Documents/GitHub/KS6e-MDB/src",
+                    "C:/Users/jdsil/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                    "C:/Users/jdsil/Documents/GitHub/KS6e-MDB/.pio/libdeps/micro/Metro-Arduino-Wiring",
+                    "C:/Users/jdsil/.platformio/packages/framework-arduino-avr/cores/arduino",
+                    "C:/Users/jdsil/.platformio/packages/framework-arduino-avr/variants/micro",
+                    "C:/Users/jdsil/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                    "C:/Users/jdsil/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                    "C:/Users/jdsil/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                    "C:/Users/jdsil/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
                     ""
                 ]
             },

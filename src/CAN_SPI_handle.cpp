@@ -31,11 +31,9 @@ void send_SPI(uint32_t id_1, uint32_t id_2, uint8_t buf_1[], uint8_t buf_2[])
     {
         msg_1.data[INDEX] = buf_1[INDEX];
         msg_2.data[INDEX] = buf_2[INDEX];
-
     }
 
 #if DEBUG
-
     for (uint8_t INDEX = 0; INDEX < (CHANNELS / 2); INDEX++)
     {
         Serial.print("Data1 ");
@@ -48,7 +46,6 @@ void send_SPI(uint32_t id_1, uint32_t id_2, uint8_t buf_1[], uint8_t buf_2[])
 
     Serial.print("Min 1: ");
     Serial.println(msg_1.data[6]);
-
     Serial.print("Max 1: ");
     Serial.println(msg_1.data[7]);
 
@@ -59,18 +56,15 @@ void send_SPI(uint32_t id_1, uint32_t id_2, uint8_t buf_1[], uint8_t buf_2[])
         Serial.print(": ");
         Serial.print(msg_2.data[INDEX]);
         Serial.println();
-
     }
 
     Serial.print("Min 2: ");
     Serial.println(msg_2.data[6]);
-
     Serial.print("Max 2: ");
     Serial.println(msg_2.data[7]);
 #endif
 
-
-    // Send the messages through SPI
+    // Send the messages through CAN
     CAN.write(msg_1);
     delay(10);
     CAN.write(msg_2);
