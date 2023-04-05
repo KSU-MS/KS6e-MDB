@@ -1,23 +1,16 @@
-//
-// !!! WARNING !!! AUTO-GENERATED FILE!
-// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
-// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
-//
 {
     "configurations": [
         {
             "name": "PlatformIO",
             "includePath": [
-                "c:/Users/grays/OneDrive/Documents/GitHub/KS6e-MDB/include",
-                "c:/Users/grays/OneDrive/Documents/GitHub/KS6e-MDB/src",
-                "C:/Users/grays/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
-                "C:/Users/grays/.platformio/packages/framework-arduino-avr/cores/arduino",
-                "C:/Users/grays/.platformio/packages/framework-arduino-avr/variants/micro",
-                "C:/Users/grays/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
-                "C:/Users/grays/.platformio/packages/framework-arduino-avr/libraries/HID/src",
-                "C:/Users/grays/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
-                "C:/Users/grays/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
-                ""
+                "C:\\Users\\jdsil\\Documents\\GitHub\\KS6e-MDB\\**",
+                "C:/Users/jdsil/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                "C:/Users/jdsil/.platformio/packages/framework-arduino-avr/cores/arduino",
+                "C:/Users/jdsil/.platformio/packages/framework-arduino-avr/variants/micro",
+                "C:/Users/jdsil/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                "C:/Users/jdsil/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                "C:/Users/jdsil/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                "C:/Users/jdsil/.platformio/packages/framework-arduino-avr/libraries/Wire/src"
             ],
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
@@ -49,7 +42,7 @@
             ],
             "cStandard": "c11",
             "cppStandard": "c++11",
-            "compilerPath": "C:/Users/grays/.platformio/packages/toolchain-atmelavr/bin/avr-gcc.exe",
+            "compilerPath": "C:/Users/jdsil/.platformio/packages/toolchain-atmelavr/bin/avr-gcc.exe",
             "compilerArgs": [
                 "-mmcu=atmega32u4",
                 ""
