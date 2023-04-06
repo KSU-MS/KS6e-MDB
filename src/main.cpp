@@ -10,7 +10,7 @@
 
 #include "TempSensor.h"
 #include "CAN_SPI_handle.h"
-#include "MDB_Labels.h"
+#include "MDB_labels.h"
 #include <Metro.h>
 
 Metro sendSPI = Metro(20);
