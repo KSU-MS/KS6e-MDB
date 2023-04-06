@@ -7,9 +7,9 @@
     - pieshower
 */
  
-#include <Arduino.h>
+
 #include "TempSensor.h"
-#include "SPI_handle.h"
+#include "CAN_SPI_handle.h"
 #include "MDB_Labels.h"
 #include <Metro.h>
 
@@ -25,12 +25,14 @@ void setup()
 
 void loop()
 {
-    if(updateTemps.check()){
+    if(updateTemps.check())
+    {
         Battery_Module.updateTemp();
         Battery_Module.updateMinTemp();
         Battery_Module.updateMaxTemp();
     }
-    if(sendSPI.check()){
+    else if(sendSPI.check())
+    {
         send_SPI(MODULE_2_A, MODULE_2_B, Battery_Module.getTempModuleHALF1(), Battery_Module.getTempModuleHALF2());
     }
 }

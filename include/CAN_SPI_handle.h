@@ -1,5 +1,5 @@
-#ifndef SPI_HANDLE_H
-#define SPI_HANDLE_H
+#ifndef CAN_SPI_HANDLE_H
+#define CAN_SPI_HANDLE_H
 
 #include "CAN_MCP2515.h"
 

@@ -1,5 +1,7 @@
+
+
 #include "TempSensor.h"
-#include "SPI_handle.h"
+#include "CAN_SPI_handle.h"
 
 // ------------------------------------------------
 // Initializes the SPI pins, CAN, and CS

@@ -1,14 +1,13 @@
 
 
-#include <Arduino.h>
 #include "TempSensor.h"
-#include "MDB_Labels.h"
+#include "MDB_labels.h"
 
 // ---------------------------------------------------------------------
 // Channel Identities in a array
 
-uint8_t portPins[CHANNELS] = {CHANNEL1, CHANNEL2, CHANNEL3, CHANNEL4,
-                              CHANNEL5, CHANNEL6, CHANNEL7, CHANNEL8,
+uint8_t portPins[CHANNELS] = {CHANNEL1,  CHANNEL2,  CHANNEL3, CHANNEL4,
+                              CHANNEL5,  CHANNEL6,  CHANNEL7, CHANNEL8,
                               CHANNEL9, CHANNEL10, CHANNEL11, CHANNEL12};
 
 // ---------------------------------------------------------------------

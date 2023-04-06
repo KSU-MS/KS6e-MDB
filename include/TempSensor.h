@@ -11,7 +11,7 @@
 
 // -------------------------------------------------
 // Number of total channels
-#define   CHANNELS   12
+#define   CHANNELS    12
 
 // --------------------------------------------------
 // Channels for each CELL in a MODULE
@@ -65,6 +65,7 @@ public:
     uint8_t getMaxTempModuleHALF1();
     uint8_t getMaxTempModuleHALF2();
 };
+
 static TempSensor Battery_Module;
 
 #endif
