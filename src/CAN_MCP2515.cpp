@@ -70,7 +70,7 @@ CAN_MCP2515::CAN_MCP2515()
   _init();
 }
 
-CAN_MCP2515::CAN_MCP2515(uint8_t CS_Pin)
+CAN_MCP2515::CAN_MCP2515(uint16_t CS_Pin)
 {
   CS = CS_Pin;
   _init();
@@ -83,7 +83,7 @@ void CAN_MCP2515::_init()
 }
 
 //Start MCP2515 communications
-void CAN_MCP2515::begin(uint32_t bitrate, uint8_t mode)
+void CAN_MCP2515::begin(uint32_t bitrate, uint16_t mode)
 {
   SPI.begin();//SPI communication begin
   reset();//Set MCP2515 into Config mode by soft reset. Note MCP2515 is in Config mode by default at power up.
@@ -103,9 +103,9 @@ void CAN_MCP2515::end()
 }
 
 // Check to see if message is available
-uint8_t CAN_MCP2515::available()
+uint16_t CAN_MCP2515::available()
 {
-  uint8_t msgStatus = readStatus();
+  uint16_t msgStatus = readStatus();
   // (msgStatus & 0x01) means message in RX buffer 0
   // (msgStatus & 0x02) means message in RX buffer 1
   // Returns number of messages available
@@ -117,8 +117,8 @@ uint8_t CAN_MCP2515::available()
 CAN_Frame CAN_MCP2515::read()
 {
   CAN_Frame message;
-  uint8_t buffer, msgStatus;
-  uint8_t RXBnSIDH, RXBnSIDL, RXBnEID8, RXBnEID0, RXBnDLC;
+  uint16_t buffer, msgStatus;
+  uint16_t RXBnSIDH, RXBnSIDL, RXBnEID8, RXBnEID0, RXBnDLC;
 
   msgStatus = readStatus();
 
@@ -189,7 +189,7 @@ CAN_Frame CAN_MCP2515::read()
 // Receive and display any message (J1939, CANopen, CAN).
 // This functions provides an easy way to see the message if user doesn't care about the actual message protocol.
 // No message struct is used here.
-void CAN_MCP2515::read(uint32_t * ID, uint8_t * length_out, uint8_t * data_out)
+void CAN_MCP2515::read(uint32_t * ID, uint16_t * length_out, uint16_t * data_out)
 {
   CAN_Frame message_to_be_parsed;
   message_to_be_parsed = read();
@@ -204,9 +204,9 @@ void CAN_MCP2515::flush()
   clearTxBuffers();
 }
 
-uint8_t CAN_MCP2515::write(const CAN_Frame & message)
+uint16_t CAN_MCP2515::write(const CAN_Frame & message)
 {
-  uint8_t TXBnSIDH, TXBnSIDL, TXBnEID8, TXBnEID0, TXBnDLC, msgStatus, loadBuffer, sendBuffer;
+  uint16_t TXBnSIDH, TXBnSIDL, TXBnEID8, TXBnEID0, TXBnDLC, msgStatus, loadBuffer, sendBuffer;
   msgStatus = readStatus();
 
   if (!(msgStatus & MCP2515_STATUS_TXB0CNTRL_TXREQ)) //transmit buffer 0 is open
@@ -278,7 +278,7 @@ uint8_t CAN_MCP2515::write(const CAN_Frame & message)
 
 
 // Function to load and send any message. (J1939, CANopen, CAN). It assumes user knows what the ID is supposed to be
-uint8_t CAN_MCP2515::write(uint32_t ID, uint8_t frameType, uint8_t length, uint8_t * data) // changed from send() to write()
+uint16_t CAN_MCP2515::write(uint32_t ID, uint16_t frameType, uint16_t length, uint16_t * data) // changed from send() to write()
 {
   CAN_Frame message_to_be_sent;
   message_to_be_sent.id = ID;
@@ -298,18 +298,18 @@ void CAN_MCP2515::reset()
 }
 
 //Reads a single MCP2515 register
-uint8_t CAN_MCP2515::readAddress(uint8_t address)
+uint16_t CAN_MCP2515::readAddress(uint16_t address)
 {
   digitalWrite(CS, LOW);
   SPI.transfer(MCP2515_SPI_READ);
   SPI.transfer(address);
-  uint8_t retVal = SPI.transfer(0xFF);
+  uint16_t retVal = SPI.transfer(0xFF);
   digitalWrite(CS, HIGH);
   return retVal;
 }
 
 // Writes a single MCP2515 register
-void CAN_MCP2515::writeAddress(uint8_t address, uint8_t value)
+void CAN_MCP2515::writeAddress(uint16_t address, uint16_t value)
 {
   digitalWrite(CS, LOW);
   SPI.transfer(MCP2515_SPI_WRITE);
@@ -319,7 +319,7 @@ void CAN_MCP2515::writeAddress(uint8_t address, uint8_t value)
 }
 
 // Modifies a single MCP2515 register
-void CAN_MCP2515::modifyAddress(uint8_t address, uint8_t mask, uint8_t value)
+void CAN_MCP2515::modifyAddress(uint16_t address, uint16_t mask, uint16_t value)
 {
   digitalWrite(CS, LOW);
   SPI.transfer(MCP2515_SPI_BIT_MODIFY);
@@ -330,21 +330,21 @@ void CAN_MCP2515::modifyAddress(uint8_t address, uint8_t mask, uint8_t value)
 }
 
 //Function that reads several status bits for transmit and receive functions.
-uint8_t CAN_MCP2515::readStatus()
+uint16_t CAN_MCP2515::readStatus()
 {
   digitalWrite(CS, LOW);
   SPI.transfer(MCP2515_SPI_READ_STATUS);
-  uint8_t retVal = SPI.transfer(0xFF);
+  uint16_t retVal = SPI.transfer(0xFF);
   digitalWrite(CS, HIGH);
   return retVal;
 }
 
 //Function that reads receive functions and filter hits
-uint8_t CAN_MCP2515::readRXStatus()
+uint16_t CAN_MCP2515::readRXStatus()
 {
   digitalWrite(CS, LOW);
   SPI.transfer(MCP2515_SPI_RX_STATUS);
-  uint8_t retVal = SPI.transfer(0xFF);
+  uint16_t retVal = SPI.transfer(0xFF);
   digitalWrite(CS, HIGH);
   return retVal;
   /*
@@ -377,13 +377,13 @@ uint8_t CAN_MCP2515::readRXStatus()
 
 // MCP2515 INITIALIZATION COMMANDS.
 //MCP2515 can be set into 5 different modes: CONFIG, NORMAL, SLEEP, LISTEN, LOOPBACK
-void CAN_MCP2515::setMode(uint8_t mode)
+void CAN_MCP2515::setMode(uint16_t mode)
 {
   modifyAddress(MCP2515_CANCTRL, MCP2515_REQOPn, mode); //Writes config values to registers
 }
 
 // Function to read mode back
-uint8_t CAN_MCP2515::getMode()
+uint16_t CAN_MCP2515::getMode()
 {
   return (readAddress(MCP2515_CANSTAT) & MCP2515_REQOPn);
 }
@@ -393,7 +393,7 @@ uint8_t CAN_MCP2515::getMode()
 // See MCP2515 datasheet Pg39 for more info.
 void CAN_MCP2515::setBitrate(uint32_t bitrate)
 {
-  uint8_t CNF1, CNF2, CNF3;
+  uint16_t CNF1, CNF2, CNF3;
   if (bitrate == 10000)
   {
     CNF1 = 0x31; // Set BRP5, BRP4, and BRP0
@@ -454,7 +454,7 @@ void CAN_MCP2515::setBitrate(uint32_t bitrate)
 // to work using a Peak-System PCAN-USB dongle as a reference.
 void CAN_MCP2515::setBitrate16MHz(uint32_t bitrate)
 {
-  uint8_t CNF1, CNF2, CNF3;
+  uint16_t CNF1, CNF2, CNF3;
 
   if (bitrate == 5000)
   {
@@ -541,7 +541,7 @@ void CAN_MCP2515::setBitrate16MHz(uint32_t bitrate)
 
 uint32_t CAN_MCP2515::getBitrate()
 {
-  uint8_t CNF1, CNF2, CNF3;
+  uint16_t CNF1, CNF2, CNF3;
   CNF1 = readAddress(MCP2515_CNF1);
   CNF2 = readAddress(MCP2515_CNF2);
   CNF3 = readAddress(MCP2515_CNF3);
@@ -599,7 +599,7 @@ void CAN_MCP2515::clearFilters()
 }
 
 //Set Masks for filters
-void CAN_MCP2515::setMask(uint8_t mask, uint8_t b0, uint8_t b1, uint8_t b2, uint8_t b3)
+void CAN_MCP2515::setMask(uint16_t mask, uint16_t b0, uint16_t b1, uint16_t b2, uint16_t b3)
 {
   setMode(MCP2515_MODE_CONFIG);
   digitalWrite(CS, LOW);
@@ -613,7 +613,7 @@ void CAN_MCP2515::setMask(uint8_t mask, uint8_t b0, uint8_t b1, uint8_t b2, uint
 }
 
 // Set Receive Filters. Will think of a more user friendly way to set these in the future but for right now it works....
-void CAN_MCP2515::setFilter(uint8_t filter, uint8_t b0, uint8_t b1, uint8_t b2, uint8_t b3)
+void CAN_MCP2515::setFilter(uint16_t filter, uint16_t b0, uint16_t b1, uint16_t b2, uint16_t b3)
 {
   setMode(MCP2515_MODE_CONFIG);
   digitalWrite(CS, LOW);
@@ -633,7 +633,7 @@ void CAN_MCP2515::clearRxBuffers()
   digitalWrite(CS, LOW);
   SPI.transfer(MCP2515_SPI_WRITE);
   SPI.transfer(MCP2515_RXB0SIDH);
-  for (uint8_t i = 0; i < 13; i++)
+  for (uint16_t i = 0; i < 13; i++)
   {
     SPI.transfer(0x00);
   }
@@ -641,7 +641,7 @@ void CAN_MCP2515::clearRxBuffers()
   digitalWrite(CS, LOW);
   SPI.transfer (MCP2515_SPI_WRITE);
   SPI.transfer (MCP2515_RXB1SIDH);
-  for (uint8_t i = 0; i < 13; i++)
+  for (uint16_t i = 0; i < 13; i++)
   {
     SPI.transfer(0x00);
   }
@@ -655,7 +655,7 @@ void CAN_MCP2515::clearTxBuffers()
   digitalWrite(CS, LOW);
   SPI.transfer (MCP2515_SPI_WRITE);
   SPI.transfer (MCP2515_TXB0SIDH);
-  for (uint8_t i = 0; i < 13; i++)
+  for (uint16_t i = 0; i < 13; i++)
   {
     SPI.transfer(0x00);
   }
@@ -663,7 +663,7 @@ void CAN_MCP2515::clearTxBuffers()
   digitalWrite(CS, LOW);
   SPI.transfer (MCP2515_SPI_WRITE);
   SPI.transfer (MCP2515_TXB1SIDH);
-  for (uint8_t i = 0; i < 13; i++)
+  for (uint16_t i = 0; i < 13; i++)
   {
     SPI.transfer(0x00);
   }
@@ -671,7 +671,7 @@ void CAN_MCP2515::clearTxBuffers()
   digitalWrite(CS, LOW);
   SPI.transfer (MCP2515_SPI_WRITE);
   SPI.transfer (MCP2515_TXB2SIDH);
-  for (uint8_t i = 0; i < 13; i++)
+  for (uint16_t i = 0; i < 13; i++)
   {
     SPI.transfer(0x00);
   }
@@ -692,7 +692,7 @@ void CAN_MCP2515::enableRTSPins()
 // each interrupt source. When an interrupt occurs, the INT pin is driven low by the MCP2515
 // and will remain low until the interrupt is cleared by the MCU. An interrupt can not be
 // cleared if the respective condition still prevails.
-void CAN_MCP2515::setInterrupts(uint8_t mask, uint8_t writeVal)
+void CAN_MCP2515::setInterrupts(uint16_t mask, uint16_t writeVal)
 {
   modifyAddress(MCP2515_CANINTE, mask, writeVal);
   /*

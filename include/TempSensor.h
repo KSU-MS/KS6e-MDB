@@ -34,9 +34,9 @@
 // Just a more organized way of storing the temps
 typedef struct temperature
 {
-    uint8_t temp[8] = { 0 };
-    uint8_t minTemp = 0;
-    uint8_t maxTemp = 0;
+    uint16_t temp[8] = { 0 };
+    uint16_t minTemp = 0;
+    uint16_t maxTemp = 0;
 } temperature;
 
 typedef struct module
@@ -58,13 +58,16 @@ public:
     void updateTemp();
     void updateMinTemp();
     void updateMaxTemp();
-    uint8_t *getTempModuleHALF1();
-    uint8_t *getTempModuleHALF2();
-    uint8_t getMinTempModuleHALF1();
-    uint8_t getMinTempModuleHALF2();
-    uint8_t getMaxTempModuleHALF1();
-    uint8_t getMaxTempModuleHALF2();
+    uint16_t *getTempModuleHALF1();
+    uint16_t *getTempModuleHALF2();
+    uint16_t getMinTempModuleHALF1();
+    uint16_t getMinTempModuleHALF2();
+    uint16_t getMaxTempModuleHALF1();
+    uint16_t getMaxTempModuleHALF2();
 };
+
+
 static TempSensor Battery_Module;
+
 
 #endif

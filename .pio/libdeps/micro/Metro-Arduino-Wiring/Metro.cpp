@@ -28,7 +28,7 @@ void Metro::interval(unsigned long interval_millis)
   this->interval_millis = interval_millis;
 }
 
-uint8_t Metro::check()
+uint16_t Metro::check()
 {
 
   unsigned long now = millis();

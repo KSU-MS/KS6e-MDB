@@ -130,14 +130,14 @@ typedef struct __attribute__((__packed__))
 {
   uint32_t id : 29;       // if (ide == CAN_RECESSIVE) { extended ID }
   //   else { standard ID }
-  uint8_t valid : 1;      // To avoid passing garbage frames around
-  uint8_t rtr : 1;        // Remote Transmission Request Bit (RTR)
-  uint8_t extended : 1;   // Identifier Extension Bit (IDE)
+  uint16_t valid : 1;      // To avoid passing garbage frames around
+  uint16_t rtr : 1;        // Remote Transmission Request Bit (RTR)
+  uint16_t extended : 1;   // Identifier Extension Bit (IDE)
   uint32_t fid;           // family ID
-  uint8_t priority : 4;	  // Priority but only important for TX frames and then only for special uses.
-  uint8_t length : 8;     // Data Length
+  uint16_t priority : 4;	  // Priority but only important for TX frames and then only for special uses.
+  uint16_t length : 8;     // Data Length
   uint16_t timeout;       // milliseconds, zero will disable waiting
-  uint8_t data[8] = { 0 }; 			  // Message data
+  uint16_t data[8] = { 0 }; 			  // Message data
 } CAN_Frame; // suffix of '_t' is reserved by POSIX for future use
 
 
@@ -189,9 +189,9 @@ typedef struct __attribute__((__packed__))
 {
   uint32_t id : 29;       // if (ide == CAN_RECESSIVE) { extended ID }
   //   else { standard ID }
-  uint8_t rtr : 1;        // Remote Transmission Request Bit (RTR)
-  uint8_t extended : 1;   // Identifier Extension Bit (IDE)
-  uint8_t data[2];        // Filter / Mask for message data
+  uint16_t rtr : 1;        // Remote Transmission Request Bit (RTR)
+  uint16_t extended : 1;   // Identifier Extension Bit (IDE)
+  uint16_t data[2];        // Filter / Mask for message data
 } CAN_Filter; // suffix of '_t' is reserved by POSIX for future use
 
 
@@ -200,10 +200,10 @@ class CANClass // Can't inherit from Stream
   public:
     virtual void begin(uint32_t bitrate);
     virtual void end();
-    virtual uint8_t available();
+    virtual uint16_t available();
     virtual CAN_Frame read();
     virtual void flush();
-    virtual uint8_t write(const CAN_Frame&);
+    virtual uint16_t write(const CAN_Frame&);
 
     //CAN_Frame& operator=(const CAN_Frame&);
 };

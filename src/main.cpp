@@ -21,16 +21,28 @@ void setup()
     //Serial.begin(9600);
     init_SPI();
     //while (!Serial);
+
+    DDRF &= ~(0x0F << 4);
+
 }
 
 void loop()
 {
-    if(updateTemps.check()){
-        Battery_Module.updateTemp();
-        Battery_Module.updateMinTemp();
-        Battery_Module.updateMaxTemp();
-    }
-    if(sendSPI.check()){
-        send_SPI(MODULE_2_A, MODULE_2_B, Battery_Module.getTempModuleHALF1(), Battery_Module.getTempModuleHALF2());
-    }
+    // if(updateTemps.check()){
+    //     Battery_Module.updateTemp();
+    //     Battery_Module.updateMinTemp();
+    //     Battery_Module.updateMaxTemp();
+    // }
+    // if(sendSPI.check()){
+    //     send_SPI(MODULE_5_A, MODULE_5_B, Battery_Module.getTempModuleHALF1(), Battery_Module.getTempModuleHALF2());
+    // }
+
+    PORTF |= (B0110 << 4);
+
+    int voltgeDawg = analogRead(TEMPIN);
+
+    Serial.println(voltgeDawg);
+
+    delay(1000);
+
 }
