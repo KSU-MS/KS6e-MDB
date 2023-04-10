@@ -37,7 +37,7 @@ void loop()
     //     send_SPI(MODULE_5_A, MODULE_5_B, Battery_Module.getTempModuleHALF1(), Battery_Module.getTempModuleHALF2());
     // }
 
-    PORTF |= (B0110 << 4);
+    PORTF |= (CHANNEL6 << 4);
 
     int voltgeDawg = analogRead(TEMPIN);
 
