@@ -28,6 +28,12 @@
 #define  CHANNEL11    B0101
 #define  CHANNEL12    B1101
 
+#define MUXAPIN A0
+#define MUXBPIN A1
+#define MUXCPIN A2
+#define MUXDPIN A3
+
+
 #define     TEMPIN    A7
 
 // --------------------------------------------------

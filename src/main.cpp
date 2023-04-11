@@ -18,7 +18,7 @@ Metro updateTemps = Metro(10);
 
 void setup()
 {
-    //Serial.begin(9600);
+    Serial.begin(9600);
     init_SPI();
     //while (!Serial);
 }
@@ -26,13 +26,15 @@ void setup()
 void loop()
 {
     if(updateTemps.check())
-    {
+    {   
+        Serial.println("updated temp");
         Battery_Module.updateTemp();
         Battery_Module.updateMinTemp();
         Battery_Module.updateMaxTemp();
     }
-    else if(sendSPI.check())
+    if(sendSPI.check())
     {
-        send_SPI(MODULE_2_A, MODULE_2_B, Battery_Module.getTempModuleHALF1(), Battery_Module.getTempModuleHALF2());
+        Serial.println("sendSPI");
+        send_SPI(MODULE_5_A, MODULE_5_B, Battery_Module.getTempModuleHALF1(), Battery_Module.getTempModuleHALF2());
     }
 }

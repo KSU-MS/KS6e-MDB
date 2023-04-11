@@ -51,7 +51,7 @@ void send_SPI(uint32_t id_1, uint32_t id_2, uint8_t buf_1[], uint8_t buf_2[])
     Serial.print("Max 1: ");
     Serial.println(msg_1.data[7]);
 
-    for (uint8_t INDEX = 0; INDEX < (CHANNELS / 2); INDEX++)
+    for (uint8_t INDEX = (CHANNELS / 2); INDEX < CHANNELS; INDEX++)
     {
         Serial.print("Data2 ");
         Serial.print(INDEX);

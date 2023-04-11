@@ -31,6 +31,7 @@ void TempSensor::updateTemp()
             delay(40);
             this->Module_HALF1.senceTemp.temp[CHANNEL] = analogRead(TEMPIN);
             delay(20);
+            Serial.println(Module_HALF1.senceTemp.temp[CHANNEL]);
             PORTF &= ~(0x0F << 4);
         }
         else if (CHANNEL >= (CHANNELS / 2))
@@ -39,9 +40,36 @@ void TempSensor::updateTemp()
             delay(40);
             this->Module_HALF2.senceTemp.temp[CHANNEL - (CHANNELS / 2)] = analogRead(TEMPIN);
             delay(20);
+            Serial.println(this->Module_HALF2.senceTemp.temp[CHANNEL - (CHANNELS / 2)]);
             PORTF &= ~(0x0F << 4);
         }
+        
     }
+
+
+
+    // for (int CHANNEL = 0; CHANNEL < CHANNELS; CHANNEL++)
+    // {
+    //     if (CHANNEL < (CHANNELS / 2))
+    //     {
+    //         PORTF |= (portPins[CHANNEL] << 4);
+    //         delay(40);
+    //         this->Module_HALF1.senceTemp.temp[CHANNEL] = analogRead(TEMPIN);
+    //         delay(20);
+    //         Serial.println(Module_HALF1.senceTemp.temp[CHANNEL]);
+    //         PORTF &= ~(0x0F << 4);
+    //     }
+    //     else if (CHANNEL >= (CHANNELS / 2))
+    //     {
+    //         PORTF |= (portPins[CHANNEL] << 4);
+    //         delay(40);
+    //         this->Module_HALF2.senceTemp.temp[CHANNEL - (CHANNELS / 2)] = analogRead(TEMPIN);
+    //         delay(20);
+    //         Serial.println(this->Module_HALF2.senceTemp.temp[CHANNEL - (CHANNELS / 2)]);
+    //         PORTF &= ~(0x0F << 4);
+    //     }
+        
+    // }
 }
 
 // -------------------------------------------------------------------
