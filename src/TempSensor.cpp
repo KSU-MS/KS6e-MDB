@@ -248,7 +248,7 @@ void TempSensor::updateMinTemp()
         }
     }
 
-    for (int CHANNEL = 0; CHANNEL < (CHANNELS / 2); CHANNEL++)
+    for (int CHANNEL = (CHANNELS / 2); CHANNEL < CHANNELS; CHANNEL++)
     {
         if (this->Module_HALF2.senceTemp.temp[CHANNEL] < minTempM2)
         {
@@ -271,7 +271,7 @@ void TempSensor::updateMaxTemp()
             maxTempM1 = this->Module_HALF1.senceTemp.temp[CHANNEL];
         }
     }
-    for (int CHANNEL = 0; CHANNEL < (CHANNELS / 2); CHANNEL++)
+    for (int CHANNEL = (CHANNELS / 2); CHANNEL < CHANNELS; CHANNEL++)
     {
         if (this->Module_HALF2.senceTemp.temp[CHANNEL] > maxTempM2)
         {
