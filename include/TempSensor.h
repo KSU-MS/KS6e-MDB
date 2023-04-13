@@ -7,6 +7,8 @@
 #ifndef TEMPSENSOR_H
 #define TEMPSENSOR_H
 
+#define DEBUG
+
 #include <Arduino.h>
 
 // -------------------------------------------------
@@ -15,26 +17,27 @@
 
 // --------------------------------------------------
 // Channels for each CELL in a MODULE
-#define   CHANNEL1    B0000
-#define   CHANNEL2    B1000
-#define   CHANNEL3    B0100
-#define   CHANNEL4    B1100
-#define   CHANNEL5    B0010
-#define   CHANNEL6    B1010
-#define   CHANNEL7    B0110
-#define   CHANNEL8    B1110
-#define   CHANNEL9    B0001
-#define  CHANNEL10    B1001
-#define  CHANNEL11    B0101
-#define  CHANNEL12    B1101
+#define   CHANNEL0    B0000
+#define   CHANNEL1    B1000
+#define   CHANNEL2    B0100
+#define   CHANNEL3    B1100
+#define   CHANNEL4    B0010
+#define   CHANNEL5    B1010
+#define   CHANNEL6    B0110
+#define   CHANNEL7    B1110
+#define   CHANNEL8    B0001
+#define   CHANNEL9    B1001
+#define  CHANNEL10    B0101
+#define  CHANNEL11    B1101
 
-#define MUXAPIN A0
-#define MUXBPIN A1
-#define MUXCPIN A2
-#define MUXDPIN A3
+#define MUXAPIN 18
+#define MUXBPIN 19
+#define MUXCPIN 20
+#define MUXDPIN 21  
 
 
-#define     TEMPIN    A7
+#define TEMPIN 6
+
 
 // --------------------------------------------------
 // Just a more organized way of storing the temps

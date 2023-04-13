@@ -35,7 +35,7 @@ void send_SPI(uint32_t id_1, uint32_t id_2, uint8_t buf_1[], uint8_t buf_2[])
         msg_2.data[INDEX] = buf_2[INDEX];
     }
 
-#if DEBUG
+#ifdef DEBUG
     for (uint8_t INDEX = 0; INDEX < (CHANNELS / 2); INDEX++)
     {
         Serial.print("Data1 ");

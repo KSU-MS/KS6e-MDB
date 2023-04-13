@@ -3,19 +3,23 @@
 #include "TempSensor.h"
 #include "MDB_labels.h"
 
+int delaySettle = 40;
+int delaySelect = 20;
+
+
 // ---------------------------------------------------------------------
 // Channel Identities in a array
 
-uint8_t portPins[CHANNELS] = {CHANNEL1,  CHANNEL2,  CHANNEL3, CHANNEL4,
-                              CHANNEL5,  CHANNEL6,  CHANNEL7, CHANNEL8,
-                              CHANNEL9, CHANNEL10, CHANNEL11, CHANNEL12};
+uint8_t portPins[CHANNELS] = {CHANNEL0,  CHANNEL1,  CHANNEL2, CHANNEL3,
+                              CHANNEL4,  CHANNEL5,  CHANNEL6, CHANNEL7,
+                              CHANNEL8, CHANNEL9, CHANNEL10, CHANNEL11};
 
 // ---------------------------------------------------------------------
 // Enables PORTF as an output (constructor)
 
 TempSensor::TempSensor()
 {
-    DDRF &= ~(0x0F << 4);
+    //DDRF &= ~(0x0F << 4);
 }
 
 // ------------------------------------------------------------------------
@@ -23,30 +27,186 @@ TempSensor::TempSensor()
 
 void TempSensor::updateTemp()
 {
-    for (int CHANNEL = 0; CHANNEL < CHANNELS; CHANNEL++)
-    {
-        if (CHANNEL < (CHANNELS / 2))
-        {
-            PORTF |= (portPins[CHANNEL] << 4);
-            delay(40);
-            this->Module_HALF1.senceTemp.temp[CHANNEL] = analogRead(TEMPIN);
-            delay(20);
-            Serial.println(Module_HALF1.senceTemp.temp[CHANNEL]);
-            PORTF &= ~(0x0F << 4);
-        }
-        else if (CHANNEL >= (CHANNELS / 2))
-        {
-            PORTF |= (portPins[CHANNEL] << 4);
-            delay(40);
-            this->Module_HALF2.senceTemp.temp[CHANNEL - (CHANNELS / 2)] = analogRead(TEMPIN);
-            delay(20);
-            Serial.println(this->Module_HALF2.senceTemp.temp[CHANNEL - (CHANNELS / 2)]);
-            PORTF &= ~(0x0F << 4);
-        }
-        
-    }
+    // Starting
+    #ifdef DEBUG
+    Serial.println("lol starting update temp");
+    #endif
 
+    // Channel 0
+    digitalWrite(MUXAPIN,0);
+    digitalWrite(MUXBPIN,0);              
+    digitalWrite(MUXCPIN,0);
+    digitalWrite(MUXDPIN,0);    
+    delay(delaySettle);
+    this->Module_HALF1.senceTemp.temp[0] = map(analogRead(A7), 0, 1023, 0,255);
+    #ifdef DEBUG
+    Serial.print("1  :");
+    Serial.println(map(analogRead(A7), 0, 1023, 0,255));
+    #endif
+    delay(delaySelect);
+    
+    // Channel 1
+    digitalWrite(MUXAPIN,1);
+    digitalWrite(MUXBPIN,0);              
+    digitalWrite(MUXCPIN,0);
+    digitalWrite(MUXDPIN,0);    
+    delay(delaySettle);
+    this->Module_HALF1.senceTemp.temp[1] = map(analogRead(A7), 0, 1023, 0,255);
+    #ifdef DEBUG
+    Serial.print("2  :");
+    Serial.println(map(analogRead(A7), 0, 1023, 0,255));
+    #endif
+    delay(delaySelect);
 
+    // Channel 2
+    digitalWrite(MUXAPIN,0);
+    digitalWrite(MUXBPIN,1);              
+    digitalWrite(MUXCPIN,0);
+    digitalWrite(MUXDPIN,0);    
+    delay(delaySettle);
+    this->Module_HALF1.senceTemp.temp[2] = map(analogRead(A7), 0, 1023, 0,255);
+    #ifdef DEBUG
+    Serial.print("3  :");
+    Serial.println(map(analogRead(A7), 0, 1023, 0,255));
+    #endif
+    delay(delaySelect);    
+    
+    // Channel 3
+    digitalWrite(MUXAPIN,1);
+    digitalWrite(MUXBPIN,1);              
+    digitalWrite(MUXCPIN,0);
+    digitalWrite(MUXDPIN,0);    
+    delay(delaySettle);
+    this->Module_HALF1.senceTemp.temp[3] = map(analogRead(A7), 0, 1023, 0,255);
+    #ifdef DEBUG
+    Serial.print("4  :");
+    Serial.println(map(analogRead(A7), 0, 1023, 0,255));
+    #endif
+    delay(delaySelect);    
+    
+    // Channel 4
+    digitalWrite(MUXAPIN,0);
+    digitalWrite(MUXBPIN,0);              
+    digitalWrite(MUXCPIN,1);
+    digitalWrite(MUXDPIN,0);    
+    delay(delaySettle);
+    this->Module_HALF1.senceTemp.temp[4] = map(analogRead(A7), 0, 1023, 0,255);
+    #ifdef DEBUG
+    Serial.print("5  :");
+    Serial.println(map(analogRead(A7), 0, 1023, 0,255));
+    #endif
+    delay(delaySelect);
+
+    // Channel 5
+    digitalWrite(MUXAPIN,1);
+    digitalWrite(MUXBPIN,0);              
+    digitalWrite(MUXCPIN,1);
+    digitalWrite(MUXDPIN,0);    
+    delay(delaySettle);
+    this->Module_HALF1.senceTemp.temp[5] = map(analogRead(A7), 0, 1023, 0,255);
+    #ifdef DEBUG
+    Serial.print("6  :");
+    Serial.println(map(analogRead(A7), 0, 1023, 0,255));
+    #endif
+    delay(delaySelect);
+
+    // Channel 6
+    digitalWrite(MUXAPIN,0);
+    digitalWrite(MUXBPIN,1);              
+    digitalWrite(MUXCPIN,1);
+    digitalWrite(MUXDPIN,0);    
+    delay(delaySettle);
+    this->Module_HALF1.senceTemp.temp[6] = map(analogRead(A7), 0, 1023, 0,255);
+    #ifdef DEBUG
+    Serial.print("7  :");
+    Serial.println(map(analogRead(A7), 0, 1023, 0,255));
+    #endif
+    delay(delaySelect);
+
+    // Channel 7
+    digitalWrite(MUXAPIN,1);
+    digitalWrite(MUXBPIN,1);              
+    digitalWrite(MUXCPIN,1);
+    digitalWrite(MUXDPIN,0);    
+    delay(delaySettle);
+    this->Module_HALF2.senceTemp.temp[7] = map(analogRead(A7), 0, 1023, 0,255);
+    #ifdef DEBUG
+    Serial.print("8  :");
+    Serial.println(Module_HALF2.senceTemp.temp[7]);
+    #endif
+    delay(delaySelect);            
+
+    // Channel 8
+    digitalWrite(MUXAPIN,0);
+    digitalWrite(MUXBPIN,0);              
+    digitalWrite(MUXCPIN,0);
+    digitalWrite(MUXDPIN,1);    
+    delay(delaySettle);
+    this->Module_HALF2.senceTemp.temp[8] = map(analogRead(A7), 0, 1023, 0,255);
+    #ifdef DEBUG
+    Serial.print("9  :");
+    Serial.println(map(analogRead(A7), 0, 1023, 0,255));
+    #endif
+    delay(delaySelect);
+
+    // Channel 9
+    digitalWrite(MUXAPIN,1);
+    digitalWrite(MUXBPIN,0);              
+    digitalWrite(MUXCPIN,0);
+    digitalWrite(MUXDPIN,1);    
+    delay(delaySettle);
+    this->Module_HALF2.senceTemp.temp[9] = map(analogRead(A7), 0, 1023, 0,255);
+    #ifdef DEBUG
+    Serial.print("10 :");
+    Serial.println(map(analogRead(A7), 0, 1023, 0,255));
+    #endif
+    delay(delaySelect);
+
+    // Channel 10
+    digitalWrite(MUXAPIN,0);
+    digitalWrite(MUXBPIN,1);              
+    digitalWrite(MUXCPIN,0);
+    digitalWrite(MUXDPIN,1);    
+    delay(delaySettle);
+    this->Module_HALF2.senceTemp.temp[10] = map(analogRead(A7), 0, 1023, 0,255);
+    #ifdef DEBUG
+    Serial.print("11 :");
+    Serial.println(map(analogRead(A7), 0, 1023, 0,255));
+    #endif
+    delay(delaySelect);
+
+    // Channel 11
+    digitalWrite(MUXAPIN,1);
+    digitalWrite(MUXBPIN,1);              
+    digitalWrite(MUXCPIN,0);
+    digitalWrite(MUXDPIN,1);    
+    delay(delaySettle);
+    this->Module_HALF2.senceTemp.temp[11] = map(analogRead(A7), 0, 1023, 0,255);
+    #ifdef DEBUG
+    Serial.print("12 :");
+    Serial.println(map(analogRead(A7), 0, 1023, 0,255));
+    #endif
+    delay(delaySelect);
+
+    // for (int CHANNEL = 0; CHANNEL < CHANNELS; CHANNEL++)
+    // {
+    //     if (CHANNEL < (CHANNELS / 2))
+    //     {
+    //         digitalWrite(MUXAPIN,CHANNEL1);
+            
+    //         digitalWrite(MUXAPIN,1);
+    //         digitalWrite(MUXBPIN,1);              
+    //         digitalWrite(MUXCPIN,1);
+    //         digitalWrite(MUXDPIN,0);    
+
+    //         delay(40);
+    //         this->Module_HALF1.senceTemp.temp[CHANNEL] = map(analogRead(A7), 0, 1023, 0,255);
+    //         delay(20);
+
+    //         Serial.println(Module_HALF1.senceTemp.temp[CHANNEL]);
+            
+    //     }
+    // }
 
     // for (int CHANNEL = 0; CHANNEL < CHANNELS; CHANNEL++)
     // {
@@ -77,8 +237,8 @@ void TempSensor::updateTemp()
 
 void TempSensor::updateMinTemp()
 {
-    uint8_t minTempM1 = this->Module_HALF1.senceTemp.temp[CHANNEL1];
-    uint8_t minTempM2 = this->Module_HALF2.senceTemp.temp[CHANNEL1];
+    uint8_t minTempM1 = this->Module_HALF1.senceTemp.temp[CHANNEL0];
+    uint8_t minTempM2 = this->Module_HALF2.senceTemp.temp[CHANNEL0];
     
     for (int CHANNEL = 0; CHANNEL < (CHANNELS / 2); CHANNEL++)
     {
@@ -102,8 +262,8 @@ void TempSensor::updateMinTemp()
 
 void TempSensor::updateMaxTemp()
 {
-    uint8_t maxTempM1 = this->Module_HALF1.senceTemp.temp[CHANNEL1];
-    uint8_t maxTempM2 = this->Module_HALF2.senceTemp.temp[CHANNEL1];
+    uint8_t maxTempM1 = this->Module_HALF1.senceTemp.temp[CHANNEL0];
+    uint8_t maxTempM2 = this->Module_HALF2.senceTemp.temp[CHANNEL0];
     for (int CHANNEL = 0; CHANNEL < (CHANNELS / 2); CHANNEL++)
     {
         if (this->Module_HALF1.senceTemp.temp[CHANNEL] > maxTempM1)

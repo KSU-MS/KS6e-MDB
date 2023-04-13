@@ -20,6 +20,11 @@ void setup()
 {
     Serial.begin(9600);
     init_SPI();
+    pinMode(A7, INPUT);
+    pinMode(MUXAPIN, OUTPUT);
+    pinMode(MUXBPIN, OUTPUT);
+    pinMode(MUXCPIN, OUTPUT);
+    pinMode(MUXDPIN, OUTPUT);
     //while (!Serial);
 }
 
