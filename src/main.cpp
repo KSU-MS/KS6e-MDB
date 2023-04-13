@@ -40,6 +40,6 @@ void loop()
     if(sendSPI.check())
     {
         Serial.println("sendSPI");
-        send_SPI(MODULE_4_A, MODULE_4_B, Battery_Module.getTempModuleHALF1(), Battery_Module.getTempModuleHALF2());
+        send_SPI(MODULE_5_A, MODULE_5_B, Battery_Module.getTempModuleHALF1(), Battery_Module.getTempModuleHALF2());
     }
 }
