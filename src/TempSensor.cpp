@@ -116,7 +116,7 @@ void TempSensor::updateTemp()
     digitalWrite(MUXCPIN,1);
     digitalWrite(MUXDPIN,0);    
     delay(delaySettle);
-    this->Module_HALF1.senceTemp.temp[6] = map(analogRead(A7), 0, 1023, 0,255);
+    this->Module_HALF2.senceTemp.temp[0] = map(analogRead(A7), 0, 1023, 0,255);
     #ifdef DEBUG
     Serial.print("7  :");
     Serial.println(map(analogRead(A7), 0, 1023, 0,255));
@@ -129,7 +129,7 @@ void TempSensor::updateTemp()
     digitalWrite(MUXCPIN,1);
     digitalWrite(MUXDPIN,0);    
     delay(delaySettle);
-    this->Module_HALF2.senceTemp.temp[7] = map(analogRead(A7), 0, 1023, 0,255);
+    this->Module_HALF2.senceTemp.temp[1] = map(analogRead(A7), 0, 1023, 0,255);
     #ifdef DEBUG
     Serial.print("8  :");
     Serial.println(Module_HALF2.senceTemp.temp[7]);
@@ -142,7 +142,7 @@ void TempSensor::updateTemp()
     digitalWrite(MUXCPIN,0);
     digitalWrite(MUXDPIN,1);    
     delay(delaySettle);
-    this->Module_HALF2.senceTemp.temp[8] = map(analogRead(A7), 0, 1023, 0,255);
+    this->Module_HALF2.senceTemp.temp[2] = map(analogRead(A7), 0, 1023, 0,255);
     #ifdef DEBUG
     Serial.print("9  :");
     Serial.println(map(analogRead(A7), 0, 1023, 0,255));
@@ -155,7 +155,7 @@ void TempSensor::updateTemp()
     digitalWrite(MUXCPIN,0);
     digitalWrite(MUXDPIN,1);    
     delay(delaySettle);
-    this->Module_HALF2.senceTemp.temp[9] = map(analogRead(A7), 0, 1023, 0,255);
+    this->Module_HALF2.senceTemp.temp[3] = map(analogRead(A7), 0, 1023, 0,255);
     #ifdef DEBUG
     Serial.print("10 :");
     Serial.println(map(analogRead(A7), 0, 1023, 0,255));
@@ -168,7 +168,7 @@ void TempSensor::updateTemp()
     digitalWrite(MUXCPIN,0);
     digitalWrite(MUXDPIN,1);    
     delay(delaySettle);
-    this->Module_HALF2.senceTemp.temp[10] = map(analogRead(A7), 0, 1023, 0,255);
+    this->Module_HALF2.senceTemp.temp[4] = map(analogRead(A7), 0, 1023, 0,255);
     #ifdef DEBUG
     Serial.print("11 :");
     Serial.println(map(analogRead(A7), 0, 1023, 0,255));
@@ -181,7 +181,7 @@ void TempSensor::updateTemp()
     digitalWrite(MUXCPIN,0);
     digitalWrite(MUXDPIN,1);    
     delay(delaySettle);
-    this->Module_HALF2.senceTemp.temp[11] = map(analogRead(A7), 0, 1023, 0,255);
+    this->Module_HALF2.senceTemp.temp[5] = map(analogRead(A7), 0, 1023, 0,255);
     #ifdef DEBUG
     Serial.print("12 :");
     Serial.println(map(analogRead(A7), 0, 1023, 0,255));
