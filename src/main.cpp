@@ -1,4 +1,3 @@
-
 /*
     Code for the MDB. Updated proper MUX function
     as well as getting the temperature of each cell
