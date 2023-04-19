@@ -29,7 +29,7 @@ void TempSensor::updateTemp()
 {
     // Starting
     #ifdef DEBUG
-    Serial.println("lol starting update temp");
+    // Serial.println("lol starting update temp");
     #endif
 
     // Channel 0
@@ -41,152 +41,152 @@ void TempSensor::updateTemp()
     this->Module_HALF1.senceTemp.temp[0] = map(analogRead(A7), 0, 1023, 0,255);
     #ifdef DEBUG
     Serial.print("1  :");
-    Serial.println(map(analogRead(A7), 0, 1023, 0,255));
+    Serial.println(analogRead(A7));
     #endif
     delay(delaySelect);
     
-    // Channel 1
-    digitalWrite(MUXAPIN,1);
-    digitalWrite(MUXBPIN,0);              
-    digitalWrite(MUXCPIN,0);
-    digitalWrite(MUXDPIN,0);    
-    delay(delaySettle);
-    this->Module_HALF1.senceTemp.temp[1] = map(analogRead(A7), 0, 1023, 0,255);
-    #ifdef DEBUG
-    Serial.print("2  :");
-    Serial.println(map(analogRead(A7), 0, 1023, 0,255));
-    #endif
-    delay(delaySelect);
+    // // Channel 1
+    // digitalWrite(MUXAPIN,1);
+    // digitalWrite(MUXBPIN,0);              
+    // digitalWrite(MUXCPIN,0);
+    // digitalWrite(MUXDPIN,0);    
+    // delay(delaySettle);
+    // this->Module_HALF1.senceTemp.temp[1] = map(analogRead(A7), 0, 1023, 0,255);
+    // #ifdef DEBUG
+    // Serial.print("2  :");
+    // Serial.println(map(analogRead(A7), 0, 1023, 0,255));
+    // #endif
+    // delay(delaySelect);
 
-    // Channel 2
-    digitalWrite(MUXAPIN,0);
-    digitalWrite(MUXBPIN,1);              
-    digitalWrite(MUXCPIN,0);
-    digitalWrite(MUXDPIN,0);    
-    delay(delaySettle);
-    this->Module_HALF1.senceTemp.temp[2] = map(analogRead(A7), 0, 1023, 0,255);
-    #ifdef DEBUG
-    Serial.print("3  :");
-    Serial.println(map(analogRead(A7), 0, 1023, 0,255));
-    #endif
-    delay(delaySelect);    
+    // // Channel 2
+    // digitalWrite(MUXAPIN,0);
+    // digitalWrite(MUXBPIN,1);              
+    // digitalWrite(MUXCPIN,0);
+    // digitalWrite(MUXDPIN,0);    
+    // delay(delaySettle);
+    // this->Module_HALF1.senceTemp.temp[2] = map(analogRead(A7), 0, 1023, 0,255);
+    // #ifdef DEBUG
+    // Serial.print("3  :");
+    // Serial.println(map(analogRead(A7), 0, 1023, 0,255));
+    // #endif
+    // delay(delaySelect);    
     
-    // Channel 3
-    digitalWrite(MUXAPIN,1);
-    digitalWrite(MUXBPIN,1);              
-    digitalWrite(MUXCPIN,0);
-    digitalWrite(MUXDPIN,0);    
-    delay(delaySettle);
-    this->Module_HALF1.senceTemp.temp[3] = map(analogRead(A7), 0, 1023, 0,255);
-    #ifdef DEBUG
-    Serial.print("4  :");
-    Serial.println(map(analogRead(A7), 0, 1023, 0,255));
-    #endif
-    delay(delaySelect);    
+    // // Channel 3
+    // digitalWrite(MUXAPIN,1);
+    // digitalWrite(MUXBPIN,1);              
+    // digitalWrite(MUXCPIN,0);
+    // digitalWrite(MUXDPIN,0);    
+    // delay(delaySettle);
+    // this->Module_HALF1.senceTemp.temp[3] = map(analogRead(A7), 0, 1023, 0,255);
+    // #ifdef DEBUG
+    // Serial.print("4  :");
+    // Serial.println(map(analogRead(A7), 0, 1023, 0,255));
+    // #endif
+    // delay(delaySelect);    
     
-    // Channel 4
-    digitalWrite(MUXAPIN,0);
-    digitalWrite(MUXBPIN,0);              
-    digitalWrite(MUXCPIN,1);
-    digitalWrite(MUXDPIN,0);    
-    delay(delaySettle);
-    this->Module_HALF1.senceTemp.temp[4] = map(analogRead(A7), 0, 1023, 0,255);
-    #ifdef DEBUG
-    Serial.print("5  :");
-    Serial.println(map(analogRead(A7), 0, 1023, 0,255));
-    #endif
-    delay(delaySelect);
+    // // Channel 4
+    // digitalWrite(MUXAPIN,0);
+    // digitalWrite(MUXBPIN,0);              
+    // digitalWrite(MUXCPIN,1);
+    // digitalWrite(MUXDPIN,0);    
+    // delay(delaySettle);
+    // this->Module_HALF1.senceTemp.temp[4] = map(analogRead(A7), 0, 1023, 0,255);
+    // #ifdef DEBUG
+    // Serial.print("5  :");
+    // Serial.println(map(analogRead(A7), 0, 1023, 0,255));
+    // #endif
+    // delay(delaySelect);
 
-    // Channel 5
-    digitalWrite(MUXAPIN,1);
-    digitalWrite(MUXBPIN,0);              
-    digitalWrite(MUXCPIN,1);
-    digitalWrite(MUXDPIN,0);    
-    delay(delaySettle);
-    this->Module_HALF1.senceTemp.temp[5] = map(analogRead(A7), 0, 1023, 0,255);
-    #ifdef DEBUG
-    Serial.print("6  :");
-    Serial.println(map(analogRead(A7), 0, 1023, 0,255));
-    #endif
-    delay(delaySelect);
+    // // Channel 5
+    // digitalWrite(MUXAPIN,1);
+    // digitalWrite(MUXBPIN,0);              
+    // digitalWrite(MUXCPIN,1);
+    // digitalWrite(MUXDPIN,0);    
+    // delay(delaySettle);
+    // this->Module_HALF1.senceTemp.temp[5] = map(analogRead(A7), 0, 1023, 0,255);
+    // #ifdef DEBUG
+    // Serial.print("6  :");
+    // Serial.println(map(analogRead(A7), 0, 1023, 0,255));
+    // #endif
+    // delay(delaySelect);
 
-    // Channel 6
-    digitalWrite(MUXAPIN,0);
-    digitalWrite(MUXBPIN,1);              
-    digitalWrite(MUXCPIN,1);
-    digitalWrite(MUXDPIN,0);    
-    delay(delaySettle);
-    this->Module_HALF2.senceTemp.temp[0] = map(analogRead(A7), 0, 1023, 0,255);
-    #ifdef DEBUG
-    Serial.print("7  :");
-    Serial.println(map(analogRead(A7), 0, 1023, 0,255));
-    #endif
-    delay(delaySelect);
+    // // Channel 6
+    // digitalWrite(MUXAPIN,0);
+    // digitalWrite(MUXBPIN,1);              
+    // digitalWrite(MUXCPIN,1);
+    // digitalWrite(MUXDPIN,0);    
+    // delay(delaySettle);
+    // this->Module_HALF2.senceTemp.temp[0] = map(analogRead(A7), 0, 1023, 0,255);
+    // #ifdef DEBUG
+    // Serial.print("7  :");
+    // Serial.println(map(analogRead(A7), 0, 1023, 0,255));
+    // #endif
+    // delay(delaySelect);
 
-    // Channel 7
-    digitalWrite(MUXAPIN,1);
-    digitalWrite(MUXBPIN,1);              
-    digitalWrite(MUXCPIN,1);
-    digitalWrite(MUXDPIN,0);    
-    delay(delaySettle);
-    this->Module_HALF2.senceTemp.temp[1] = map(analogRead(A7), 0, 1023, 0,255);
-    #ifdef DEBUG
-    Serial.print("8  :");
-    Serial.println(Module_HALF2.senceTemp.temp[7]);
-    #endif
-    delay(delaySelect);            
+    // // Channel 7
+    // digitalWrite(MUXAPIN,1);
+    // digitalWrite(MUXBPIN,1);              
+    // digitalWrite(MUXCPIN,1);
+    // digitalWrite(MUXDPIN,0);    
+    // delay(delaySettle);
+    // this->Module_HALF2.senceTemp.temp[1] = map(analogRead(A7), 0, 1023, 0,255);
+    // #ifdef DEBUG
+    // Serial.print("8  :");
+    // Serial.println(Module_HALF2.senceTemp.temp[7]);
+    // #endif
+    // delay(delaySelect);            
 
-    // Channel 8
-    digitalWrite(MUXAPIN,0);
-    digitalWrite(MUXBPIN,0);              
-    digitalWrite(MUXCPIN,0);
-    digitalWrite(MUXDPIN,1);    
-    delay(delaySettle);
-    this->Module_HALF2.senceTemp.temp[2] = map(analogRead(A7), 0, 1023, 0,255);
-    #ifdef DEBUG
-    Serial.print("9  :");
-    Serial.println(map(analogRead(A7), 0, 1023, 0,255));
-    #endif
-    delay(delaySelect);
+    // // Channel 8
+    // digitalWrite(MUXAPIN,0);
+    // digitalWrite(MUXBPIN,0);              
+    // digitalWrite(MUXCPIN,0);
+    // digitalWrite(MUXDPIN,1);    
+    // delay(delaySettle);
+    // this->Module_HALF2.senceTemp.temp[2] = map(analogRead(A7), 0, 1023, 0,255);
+    // #ifdef DEBUG
+    // Serial.print("9  :");
+    // Serial.println(map(analogRead(A7), 0, 1023, 0,255));
+    // #endif
+    // delay(delaySelect);
 
-    // Channel 9
-    digitalWrite(MUXAPIN,1);
-    digitalWrite(MUXBPIN,0);              
-    digitalWrite(MUXCPIN,0);
-    digitalWrite(MUXDPIN,1);    
-    delay(delaySettle);
-    this->Module_HALF2.senceTemp.temp[3] = map(analogRead(A7), 0, 1023, 0,255);
-    #ifdef DEBUG
-    Serial.print("10 :");
-    Serial.println(map(analogRead(A7), 0, 1023, 0,255));
-    #endif
-    delay(delaySelect);
+    // // Channel 9
+    // digitalWrite(MUXAPIN,1);
+    // digitalWrite(MUXBPIN,0);              
+    // digitalWrite(MUXCPIN,0);
+    // digitalWrite(MUXDPIN,1);    
+    // delay(delaySettle);
+    // this->Module_HALF2.senceTemp.temp[3] = map(analogRead(A7), 0, 1023, 0,255);
+    // #ifdef DEBUG
+    // Serial.print("10 :");
+    // Serial.println(map(analogRead(A7), 0, 1023, 0,255));
+    // #endif
+    // delay(delaySelect);
 
-    // Channel 10
-    digitalWrite(MUXAPIN,0);
-    digitalWrite(MUXBPIN,1);              
-    digitalWrite(MUXCPIN,0);
-    digitalWrite(MUXDPIN,1);    
-    delay(delaySettle);
-    this->Module_HALF2.senceTemp.temp[4] = map(analogRead(A7), 0, 1023, 0,255);
-    #ifdef DEBUG
-    Serial.print("11 :");
-    Serial.println(map(analogRead(A7), 0, 1023, 0,255));
-    #endif
-    delay(delaySelect);
+    // // Channel 10
+    // digitalWrite(MUXAPIN,0);
+    // digitalWrite(MUXBPIN,1);              
+    // digitalWrite(MUXCPIN,0);
+    // digitalWrite(MUXDPIN,1);    
+    // delay(delaySettle);
+    // this->Module_HALF2.senceTemp.temp[4] = map(analogRead(A7), 0, 1023, 0,255);
+    // #ifdef DEBUG
+    // Serial.print("11 :");
+    // Serial.println(map(analogRead(A7), 0, 1023, 0,255));
+    // #endif
+    // delay(delaySelect);
 
-    // Channel 11
-    digitalWrite(MUXAPIN,1);
-    digitalWrite(MUXBPIN,1);              
-    digitalWrite(MUXCPIN,0);
-    digitalWrite(MUXDPIN,1);    
-    delay(delaySettle);
-    this->Module_HALF2.senceTemp.temp[5] = map(analogRead(A7), 0, 1023, 0,255);
-    #ifdef DEBUG
-    Serial.print("12 :");
-    Serial.println(map(analogRead(A7), 0, 1023, 0,255));
-    #endif
-    delay(delaySelect);
+    // // Channel 11
+    // digitalWrite(MUXAPIN,1);
+    // digitalWrite(MUXBPIN,1);              
+    // digitalWrite(MUXCPIN,0);
+    // digitalWrite(MUXDPIN,1);    
+    // delay(delaySettle);
+    // this->Module_HALF2.senceTemp.temp[5] = map(analogRead(A7), 0, 1023, 0,255);
+    // #ifdef DEBUG
+    // Serial.print("12 :");
+    // Serial.println(map(analogRead(A7), 0, 1023, 0,255));
+    // #endif
+    // delay(delaySelect);
 
     // for (int CHANNEL = 0; CHANNEL < CHANNELS; CHANNEL++)
     // {
