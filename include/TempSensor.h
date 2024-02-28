@@ -41,6 +41,16 @@
 #define SHT3_TEMPERATURE 0
 #define    SHT3_HUMIDITY 1
 
+
+// Thinking about doing something like this 
+// #define SHT3_TEMPERATURE_H 0
+// #define SHT3_TEMPERATURE_L 1
+// #define    SHT3_HUMIDITY_H 2
+// #define    SHT3_HUMIDITY_L 3
+
+
+
+
 #define TEMPIN 6
 
 
@@ -73,6 +83,9 @@ private:
     // Eh thinking
 
     uint64_t SHT3data[2] = { 0 };
+
+    // Something with this guy 
+    // uint32_t SHT3data[4] = { 0 };
 
 public:
     TempSensor(uint16_t _SHT3_Temperature_ = 0, uint16_t _SHT3_Humidity_ = 0);
