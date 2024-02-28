@@ -35,6 +35,8 @@
 #define MUXCPIN 20
 #define MUXDPIN 21  
 
+#define SHT3_TEMPERATURE_PIN 12
+#define    SHT3_HUMIDITY_PIN 13
 
 #define TEMPIN 6
 
@@ -61,9 +63,13 @@ class TempSensor
 private:
     module Module_HALF1;
     module Module_HALF2;
+
+    uint16_t SHT3_Temperature;
+    uint16_t    SHT3_Humidity;
+
 public:
-    TempSensor();
-    ~TempSensor() {};
+    TempSensor(uint16_t _SHT3_Temperature_ = 0, uint16_t _SHT3_Humidity_ = 0);
+    ~TempSensor();
     void updateTemp();
     void updateMinTemp();
     void updateMaxTemp();
@@ -73,6 +79,10 @@ public:
     uint8_t getMinTempModuleHALF2();
     uint8_t getMaxTempModuleHALF1();
     uint8_t getMaxTempModuleHALF2();
+
+    void getSHT3data();
+
+    void convertSHT3data(uint16_t _SHT3_Temperature_, uint16_t _SHT3_Humidity_);
 };
 
 static TempSensor Battery_Module;

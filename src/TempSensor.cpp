@@ -17,9 +17,10 @@ uint8_t portPins[CHANNELS] = {CHANNEL0,  CHANNEL1,  CHANNEL2, CHANNEL3,
 // ---------------------------------------------------------------------
 // Enables PORTF as an output (constructor)
 
-TempSensor::TempSensor()
+TempSensor::TempSensor(uint16_t _SHT3_Temperature_ = 0, uint16_t _SHT3_Humidity_ = 0)
 {
-    //DDRF &= ~(0x0F << 4);
+    this->SHT3_Temperature = _SHT3_Temperature_;
+       this->SHT3_Humidity =    _SHT3_Humidity_;
 }
 
 // ------------------------------------------------------------------------
@@ -320,4 +321,25 @@ uint8_t TempSensor::getMaxTempModuleHALF1()
 uint8_t TempSensor::getMaxTempModuleHALF2()
 {
     return this->Module_HALF2.senceTemp.maxTemp;
+}
+
+
+void TempSensor::getSHT3data()
+{
+    uint16_t _SHT3_Temperature_ = analogRead(SHT3_TEMPERATURE_PIN);
+    uint16_t    _SHT3_Humidity_ = analogRead(SHT3_HUMIDITY_PIN);
+}
+
+void TempSensor::convertSHT3data(uint16_t _SHT3_Temperature_, uint16_t _SHT3_Humidity_)
+{
+    // This gonna be cringe but yolo
+
+    const double temperatureProportionalityFactor   = -66.875;
+    const double HumidityProportionalityFacotFactor = -12.5; 
+
+    double temperatureMeasured = (double)((double)(_SHT3_Temperature_ * 218.75) / 5);
+    double humidityMeasured = (double)((double)(_SHT3_Humidity_ * 125) / 5);
+
+    temperatureMeasured += temperatureProportionalityFactor;
+    humidityMeasured += HumidityProportionalityFacotFactor;
 }
