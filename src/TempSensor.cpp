@@ -324,11 +324,14 @@ uint8_t TempSensor::getMaxTempModuleHALF2()
 }
 
 
-void TempSensor::getSHT3data()
+void TempSensor::readSHT3()
 {
-    uint16_t _SHT3_Temperature_ = analogRead(SHT3_TEMPERATURE_PIN);
-    uint16_t    _SHT3_Humidity_ = analogRead(SHT3_HUMIDITY_PIN);
+    this->SHT3_Temperature = analogRead(SHT3_TEMPERATURE_PIN);
+    this->SHT3_Humidity = analogRead(SHT3_HUMIDITY_PIN);
+
+    this->convertSHT3data(this->SHT3_Temperature, this->SHT3_Humidity);
 }
+
 
 void TempSensor::convertSHT3data(uint16_t _SHT3_Temperature_, uint16_t _SHT3_Humidity_)
 {
@@ -342,4 +345,12 @@ void TempSensor::convertSHT3data(uint16_t _SHT3_Temperature_, uint16_t _SHT3_Hum
 
     temperatureMeasured += temperatureProportionalityFactor;
     humidityMeasured += HumidityProportionalityFacotFactor;
+
+    this->SHT3data[SHT3_TEMPERATURE] = temperatureMeasured;
+    this->SHT3data[SHT3_HUMIDITY] = humidityMeasured;
+}
+
+uint64_t* TempSensor::getSHT3data()
+{
+    return this->SHT3data;
 }

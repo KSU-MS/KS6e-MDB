@@ -25,6 +25,9 @@
 #define  MODULE_6_B      0x6B
 
 
+#define  _SHT3_CAN_ID_   0x69
+
+
 // ----------------------------------------
 
 #define MESSAGELEN      8

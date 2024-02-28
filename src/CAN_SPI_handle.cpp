@@ -72,3 +72,17 @@ void send_SPI(uint32_t id_1, uint32_t id_2, uint8_t buf_1[], uint8_t buf_2[])
     CAN.write(msg_2);
 }
 
+void send_SPI(uint32_t _id_, const void *_data_)
+{
+    // this is not right
+    
+    CAN_Frame msg_;
+
+    msg_.id = _id_;
+    msg_.extended = true;
+    msg_.length = sizeof(_data_);
+
+    memcpy(msg_.data, _data_, sizeof(_data_));
+
+    CAN.write(msg_);
+}

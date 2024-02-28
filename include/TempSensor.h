@@ -38,6 +38,9 @@
 #define SHT3_TEMPERATURE_PIN 12
 #define    SHT3_HUMIDITY_PIN 13
 
+#define SHT3_TEMPERATURE 0
+#define    SHT3_HUMIDITY 1
+
 #define TEMPIN 6
 
 
@@ -67,6 +70,10 @@ private:
     uint16_t SHT3_Temperature;
     uint16_t    SHT3_Humidity;
 
+    // Eh thinking
+
+    uint64_t SHT3data[2] = { 0 };
+
 public:
     TempSensor(uint16_t _SHT3_Temperature_ = 0, uint16_t _SHT3_Humidity_ = 0);
     ~TempSensor();
@@ -80,9 +87,9 @@ public:
     uint8_t getMaxTempModuleHALF1();
     uint8_t getMaxTempModuleHALF2();
 
-    void getSHT3data();
-
+    void readSHT3();
     void convertSHT3data(uint16_t _SHT3_Temperature_, uint16_t _SHT3_Humidity_);
+    uint64_t* getSHT3data();
 };
 
 static TempSensor Battery_Module;
