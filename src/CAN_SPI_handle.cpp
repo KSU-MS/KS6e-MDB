@@ -74,8 +74,8 @@ void send_SPI(uint32_t id_1, uint32_t id_2, uint8_t buf_1[], uint8_t buf_2[])
 
 void send_SPI(uint32_t _id_, const void *_data_)
 {
-    // this is not right
-    
+    // this is not right. i go to bed
+
     CAN_Frame msg_;
 
     msg_.id = _id_;
