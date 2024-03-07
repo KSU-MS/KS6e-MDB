@@ -8,10 +8,10 @@
         {
             "name": "PlatformIO",
             "includePath": [
-                "c:/Users/grays/Documents/My Repos/KS6e-MDB/include",
-                "c:/Users/grays/Documents/My Repos/KS6e-MDB/src",
+                "C:/Users/grays/Documents/KS6e-MDB/include",
+                "C:/Users/grays/Documents/KS6e-MDB/src",
                 "C:/Users/grays/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
-                "c:/Users/grays/Documents/My Repos/KS6e-MDB/.pio/libdeps/micro/Metro-Arduino-Wiring",
+                "C:/Users/grays/Documents/KS6e-MDB/.pio/libdeps/micro/Metro-Arduino-Wiring",
                 "C:/Users/grays/.platformio/packages/framework-arduino-avr/cores/arduino",
                 "C:/Users/grays/.platformio/packages/framework-arduino-avr/variants/micro",
                 "C:/Users/grays/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
@@ -23,10 +23,10 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "c:/Users/grays/Documents/My Repos/KS6e-MDB/include",
-                    "c:/Users/grays/Documents/My Repos/KS6e-MDB/src",
+                    "C:/Users/grays/Documents/KS6e-MDB/include",
+                    "C:/Users/grays/Documents/KS6e-MDB/src",
                     "C:/Users/grays/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
-                    "c:/Users/grays/Documents/My Repos/KS6e-MDB/.pio/libdeps/micro/Metro-Arduino-Wiring",
+                    "C:/Users/grays/Documents/KS6e-MDB/.pio/libdeps/micro/Metro-Arduino-Wiring",
                     "C:/Users/grays/.platformio/packages/framework-arduino-avr/cores/arduino",
                     "C:/Users/grays/.platformio/packages/framework-arduino-avr/variants/micro",
                     "C:/Users/grays/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",

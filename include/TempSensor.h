@@ -35,8 +35,8 @@
 #define MUXCPIN 20
 #define MUXDPIN 21  
 
-#define SHT3_TEMPERATURE_PIN 12
-#define    SHT3_HUMIDITY_PIN 13
+#define SHT3_TEMPERATURE_PIN A8
+#define    SHT3_HUMIDITY_PIN A9
 
 #define SHT3_TEMPERATURE 0
 #define    SHT3_HUMIDITY 1
@@ -65,7 +65,7 @@ typedef struct temperature
 
 typedef struct module
 {
-    temperature senceTemp;
+    temperature senseTemp;
 } module;
 
 // -------------------------------------

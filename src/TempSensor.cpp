@@ -15,12 +15,17 @@ uint8_t portPins[CHANNELS] = {CHANNEL0,  CHANNEL1,  CHANNEL2, CHANNEL3,
                               CHANNEL8, CHANNEL9, CHANNEL10, CHANNEL11};
 
 // ---------------------------------------------------------------------
-// Enables PORTF as an output (constructor)
+// Enables PORTF as an output (constructor) (no it don anymore)
 
 TempSensor::TempSensor(uint16_t _SHT3_Temperature_ = 0, uint16_t _SHT3_Humidity_ = 0)
 {
     this->SHT3_Temperature = _SHT3_Temperature_;
        this->SHT3_Humidity =    _SHT3_Humidity_;
+}
+
+TempSensor::~TempSensor()
+{
+
 }
 
 // ------------------------------------------------------------------------
@@ -39,7 +44,7 @@ void TempSensor::updateTemp()
     digitalWrite(MUXCPIN,0);
     digitalWrite(MUXDPIN,0);    
     delay(delaySettle);
-    this->Module_HALF1.senceTemp.temp[0] = map(analogRead(A7), 0, 1023, 0,255);
+    this->Module_HALF1.senseTemp.temp[0] = map(analogRead(A7), 0, 1023, 0,255);
     #ifdef DEBUG
     Serial.print("1  :");
     Serial.println(map(analogRead(A7), 0, 1023, 0,255));
@@ -52,7 +57,7 @@ void TempSensor::updateTemp()
     digitalWrite(MUXCPIN,0);
     digitalWrite(MUXDPIN,0);    
     delay(delaySettle);
-    this->Module_HALF1.senceTemp.temp[1] = map(analogRead(A7), 0, 1023, 0,255);
+    this->Module_HALF1.senseTemp.temp[1] = map(analogRead(A7), 0, 1023, 0,255);
     #ifdef DEBUG
     Serial.print("2  :");
     Serial.println(map(analogRead(A7), 0, 1023, 0,255));
@@ -65,7 +70,7 @@ void TempSensor::updateTemp()
     digitalWrite(MUXCPIN,0);
     digitalWrite(MUXDPIN,0);    
     delay(delaySettle);
-    this->Module_HALF1.senceTemp.temp[2] = map(analogRead(A7), 0, 1023, 0,255);
+    this->Module_HALF1.senseTemp.temp[2] = map(analogRead(A7), 0, 1023, 0,255);
     #ifdef DEBUG
     Serial.print("3  :");
     Serial.println(map(analogRead(A7), 0, 1023, 0,255));
@@ -78,7 +83,7 @@ void TempSensor::updateTemp()
     digitalWrite(MUXCPIN,0);
     digitalWrite(MUXDPIN,0);    
     delay(delaySettle);
-    this->Module_HALF1.senceTemp.temp[3] = map(analogRead(A7), 0, 1023, 0,255);
+    this->Module_HALF1.senseTemp.temp[3] = map(analogRead(A7), 0, 1023, 0,255);
     #ifdef DEBUG
     Serial.print("4  :");
     Serial.println(map(analogRead(A7), 0, 1023, 0,255));
@@ -91,7 +96,7 @@ void TempSensor::updateTemp()
     digitalWrite(MUXCPIN,1);
     digitalWrite(MUXDPIN,0);    
     delay(delaySettle);
-    this->Module_HALF1.senceTemp.temp[4] = map(analogRead(A7), 0, 1023, 0,255);
+    this->Module_HALF1.senseTemp.temp[4] = map(analogRead(A7), 0, 1023, 0,255);
     #ifdef DEBUG
     Serial.print("5  :");
     Serial.println(map(analogRead(A7), 0, 1023, 0,255));
@@ -104,7 +109,7 @@ void TempSensor::updateTemp()
     digitalWrite(MUXCPIN,1);
     digitalWrite(MUXDPIN,0);    
     delay(delaySettle);
-    this->Module_HALF1.senceTemp.temp[5] = map(analogRead(A7), 0, 1023, 0,255);
+    this->Module_HALF1.senseTemp.temp[5] = map(analogRead(A7), 0, 1023, 0,255);
     #ifdef DEBUG
     Serial.print("6  :");
     Serial.println(map(analogRead(A7), 0, 1023, 0,255));
@@ -117,7 +122,7 @@ void TempSensor::updateTemp()
     digitalWrite(MUXCPIN,1);
     digitalWrite(MUXDPIN,0);    
     delay(delaySettle);
-    this->Module_HALF2.senceTemp.temp[0] = map(analogRead(A7), 0, 1023, 0,255);
+    this->Module_HALF2.senseTemp.temp[0] = map(analogRead(A7), 0, 1023, 0,255);
     #ifdef DEBUG
     Serial.print("7  :");
     Serial.println(map(analogRead(A7), 0, 1023, 0,255));
@@ -130,10 +135,10 @@ void TempSensor::updateTemp()
     digitalWrite(MUXCPIN,1);
     digitalWrite(MUXDPIN,0);    
     delay(delaySettle);
-    this->Module_HALF2.senceTemp.temp[1] = map(analogRead(A7), 0, 1023, 0,255);
+    this->Module_HALF2.senseTemp.temp[1] = map(analogRead(A7), 0, 1023, 0,255);
     #ifdef DEBUG
     Serial.print("8  :");
-    Serial.println(Module_HALF2.senceTemp.temp[7]);
+    Serial.println(Module_HALF2.senseTemp.temp[7]);
     #endif
     delay(delaySelect);            
 
@@ -143,7 +148,7 @@ void TempSensor::updateTemp()
     digitalWrite(MUXCPIN,0);
     digitalWrite(MUXDPIN,1);    
     delay(delaySettle);
-    this->Module_HALF2.senceTemp.temp[2] = map(analogRead(A7), 0, 1023, 0,255);
+    this->Module_HALF2.senseTemp.temp[2] = map(analogRead(A7), 0, 1023, 0,255);
     #ifdef DEBUG
     Serial.print("9  :");
     Serial.println(map(analogRead(A7), 0, 1023, 0,255));
@@ -156,7 +161,7 @@ void TempSensor::updateTemp()
     digitalWrite(MUXCPIN,0);
     digitalWrite(MUXDPIN,1);    
     delay(delaySettle);
-    this->Module_HALF2.senceTemp.temp[3] = map(analogRead(A7), 0, 1023, 0,255);
+    this->Module_HALF2.senseTemp.temp[3] = map(analogRead(A7), 0, 1023, 0,255);
     #ifdef DEBUG
     Serial.print("10 :");
     Serial.println(map(analogRead(A7), 0, 1023, 0,255));
@@ -169,7 +174,7 @@ void TempSensor::updateTemp()
     digitalWrite(MUXCPIN,0);
     digitalWrite(MUXDPIN,1);    
     delay(delaySettle);
-    this->Module_HALF2.senceTemp.temp[4] = map(analogRead(A7), 0, 1023, 0,255);
+    this->Module_HALF2.senseTemp.temp[4] = map(analogRead(A7), 0, 1023, 0,255);
     #ifdef DEBUG
     Serial.print("11 :");
     Serial.println(map(analogRead(A7), 0, 1023, 0,255));
@@ -182,7 +187,7 @@ void TempSensor::updateTemp()
     digitalWrite(MUXCPIN,0);
     digitalWrite(MUXDPIN,1);    
     delay(delaySettle);
-    this->Module_HALF2.senceTemp.temp[5] = map(analogRead(A7), 0, 1023, 0,255);
+    this->Module_HALF2.senseTemp.temp[5] = map(analogRead(A7), 0, 1023, 0,255);
     #ifdef DEBUG
     Serial.print("12 :");
     Serial.println(map(analogRead(A7), 0, 1023, 0,255));
@@ -201,10 +206,10 @@ void TempSensor::updateTemp()
     //         digitalWrite(MUXDPIN,0);    
 
     //         delay(40);
-    //         this->Module_HALF1.senceTemp.temp[CHANNEL] = map(analogRead(A7), 0, 1023, 0,255);
+    //         this->Module_HALF1.senseTemp.temp[CHANNEL] = map(analogRead(A7), 0, 1023, 0,255);
     //         delay(20);
 
-    //         Serial.println(Module_HALF1.senceTemp.temp[CHANNEL]);
+    //         Serial.println(Module_HALF1.senseTemp.temp[CHANNEL]);
             
     //     }
     // }
@@ -215,18 +220,18 @@ void TempSensor::updateTemp()
     //     {
     //         PORTF |= (portPins[CHANNEL] << 4);
     //         delay(40);
-    //         this->Module_HALF1.senceTemp.temp[CHANNEL] = analogRead(TEMPIN);
+    //         this->Module_HALF1.senseTemp.temp[CHANNEL] = analogRead(TEMPIN);
     //         delay(20);
-    //         Serial.println(Module_HALF1.senceTemp.temp[CHANNEL]);
+    //         Serial.println(Module_HALF1.senseTemp.temp[CHANNEL]);
     //         PORTF &= ~(0x0F << 4);
     //     }
     //     else if (CHANNEL >= (CHANNELS / 2))
     //     {
     //         PORTF |= (portPins[CHANNEL] << 4);
     //         delay(40);
-    //         this->Module_HALF2.senceTemp.temp[CHANNEL - (CHANNELS / 2)] = analogRead(TEMPIN);
+    //         this->Module_HALF2.senseTemp.temp[CHANNEL - (CHANNELS / 2)] = analogRead(TEMPIN);
     //         delay(20);
-    //         Serial.println(this->Module_HALF2.senceTemp.temp[CHANNEL - (CHANNELS / 2)]);
+    //         Serial.println(this->Module_HALF2.senseTemp.temp[CHANNEL - (CHANNELS / 2)]);
     //         PORTF &= ~(0x0F << 4);
     //     }
         
@@ -238,49 +243,49 @@ void TempSensor::updateTemp()
 
 void TempSensor::updateMinTemp()
 {
-    uint8_t minTempM1 = this->Module_HALF1.senceTemp.temp[CHANNEL0];
-    uint8_t minTempM2 = this->Module_HALF2.senceTemp.temp[CHANNEL0];
+    uint8_t minTempM1 = this->Module_HALF1.senseTemp.temp[CHANNEL0];
+    uint8_t minTempM2 = this->Module_HALF2.senseTemp.temp[CHANNEL0];
     
     for (int CHANNEL = 0; CHANNEL < (CHANNELS / 2); CHANNEL++)
     {
-        if (this->Module_HALF1.senceTemp.temp[CHANNEL] < minTempM1)
+        if (this->Module_HALF1.senseTemp.temp[CHANNEL] < minTempM1)
         {
-            minTempM1 = this->Module_HALF1.senceTemp.temp[CHANNEL];
+            minTempM1 = this->Module_HALF1.senseTemp.temp[CHANNEL];
         }
     }
 
     for (int CHANNEL = 0; CHANNEL < (CHANNELS / 2); CHANNEL++)
     {
-        if (this->Module_HALF2.senceTemp.temp[CHANNEL] < minTempM2)
+        if (this->Module_HALF2.senseTemp.temp[CHANNEL] < minTempM2)
         {
-            minTempM2 = this->Module_HALF2.senceTemp.temp[CHANNEL];
+            minTempM2 = this->Module_HALF2.senseTemp.temp[CHANNEL];
         }
     }
 
-    this->Module_HALF1.senceTemp.minTemp = minTempM1;
-    this->Module_HALF2.senceTemp.minTemp = minTempM2;
+    this->Module_HALF1.senseTemp.minTemp = minTempM1;
+    this->Module_HALF2.senseTemp.minTemp = minTempM2;
 }
 
 void TempSensor::updateMaxTemp()
 {
-    uint8_t maxTempM1 = this->Module_HALF1.senceTemp.temp[CHANNEL0];
-    uint8_t maxTempM2 = this->Module_HALF2.senceTemp.temp[CHANNEL0];
+    uint8_t maxTempM1 = this->Module_HALF1.senseTemp.temp[CHANNEL0];
+    uint8_t maxTempM2 = this->Module_HALF2.senseTemp.temp[CHANNEL0];
     for (int CHANNEL = 0; CHANNEL < (CHANNELS / 2); CHANNEL++)
     {
-        if (this->Module_HALF1.senceTemp.temp[CHANNEL] > maxTempM1)
+        if (this->Module_HALF1.senseTemp.temp[CHANNEL] > maxTempM1)
         {
-            maxTempM1 = this->Module_HALF1.senceTemp.temp[CHANNEL];
+            maxTempM1 = this->Module_HALF1.senseTemp.temp[CHANNEL];
         }
     }
     for (int CHANNEL = 0; CHANNEL < (CHANNELS / 2); CHANNEL++)
     {
-        if (this->Module_HALF2.senceTemp.temp[CHANNEL] > maxTempM2)
+        if (this->Module_HALF2.senseTemp.temp[CHANNEL] > maxTempM2)
         {
-            maxTempM2 = this->Module_HALF2.senceTemp.temp[CHANNEL];
+            maxTempM2 = this->Module_HALF2.senseTemp.temp[CHANNEL];
         }
     }
-    this->Module_HALF1.senceTemp.maxTemp = maxTempM1;
-    this->Module_HALF2.senceTemp.maxTemp = maxTempM2;
+    this->Module_HALF1.senseTemp.maxTemp = maxTempM1;
+    this->Module_HALF2.senseTemp.maxTemp = maxTempM2;
 }
 
 // -----------------------------------------------------------------
@@ -288,16 +293,16 @@ void TempSensor::updateMaxTemp()
 
 uint8_t *TempSensor::getTempModuleHALF1()
 {
-    this->Module_HALF1.senceTemp.temp[6] = this->getMinTempModuleHALF1();
-    this->Module_HALF1.senceTemp.temp[7] = this->getMaxTempModuleHALF1();
-    return this->Module_HALF1.senceTemp.temp;
+    this->Module_HALF1.senseTemp.temp[6] = this->getMinTempModuleHALF1();
+    this->Module_HALF1.senseTemp.temp[7] = this->getMaxTempModuleHALF1();
+    return this->Module_HALF1.senseTemp.temp;
 }
 
 uint8_t *TempSensor::getTempModuleHALF2()
 {
-    this->Module_HALF2.senceTemp.temp[6] = this->getMinTempModuleHALF1();
-    this->Module_HALF2.senceTemp.temp[7] = this->getMaxTempModuleHALF2();
-    return this->Module_HALF2.senceTemp.temp;
+    this->Module_HALF2.senseTemp.temp[6] = this->getMinTempModuleHALF1();
+    this->Module_HALF2.senseTemp.temp[7] = this->getMaxTempModuleHALF2();
+    return this->Module_HALF2.senseTemp.temp;
 }
 
 // ------------------------------------------------------------------
@@ -305,22 +310,22 @@ uint8_t *TempSensor::getTempModuleHALF2()
 
 uint8_t TempSensor::getMinTempModuleHALF1()
 {
-    return this->Module_HALF1.senceTemp.minTemp;
+    return this->Module_HALF1.senseTemp.minTemp;
 }
 
 uint8_t TempSensor::getMinTempModuleHALF2()
 {
-    return this->Module_HALF2.senceTemp.minTemp;
+    return this->Module_HALF2.senseTemp.minTemp;
 }
 
 uint8_t TempSensor::getMaxTempModuleHALF1()
 {
-    return this->Module_HALF1.senceTemp.maxTemp;
+    return this->Module_HALF1.senseTemp.maxTemp;
 }
 
 uint8_t TempSensor::getMaxTempModuleHALF2()
 {
-    return this->Module_HALF2.senceTemp.maxTemp;
+    return this->Module_HALF2.senseTemp.maxTemp;
 }
 
 
@@ -328,6 +333,12 @@ void TempSensor::readSHT3()
 {
     this->SHT3_Temperature = analogRead(SHT3_TEMPERATURE_PIN);
     this->SHT3_Humidity = analogRead(SHT3_HUMIDITY_PIN);
+
+    // Serial.print("Temperature: ");
+    // Serial.println(this->SHT3_Temperature);
+
+    // Serial.print("Humidity: ");
+    // Serial.println(this->SHT3_Humidity);
 
     this->convertSHT3data(this->SHT3_Temperature, this->SHT3_Humidity);
 }
@@ -340,11 +351,19 @@ void TempSensor::convertSHT3data(uint16_t _SHT3_Temperature_, uint16_t _SHT3_Hum
     const double temperatureProportionalityFactor   = -66.875;
     const double HumidityProportionalityFacotFactor = -12.5; 
 
-    double temperatureMeasured = (double)((double)(_SHT3_Temperature_ * 218.75) / 5);
-    double humidityMeasured = (double)((double)(_SHT3_Humidity_ * 125) / 5);
+    double temperatureMeasured = ((double)_SHT3_Temperature_ / 1023.0) * 218.75;
+    double humidityMeasured = ((double)_SHT3_Humidity_ / 1023.0) * 125;
 
     temperatureMeasured += temperatureProportionalityFactor;
     humidityMeasured += HumidityProportionalityFacotFactor;
+
+    Serial.print("Temperature: ");
+    Serial.print(temperatureMeasured);
+    Serial.println("C");
+
+    Serial.print("   Humidity: ");
+    Serial.print(humidityMeasured);
+    Serial.println("%");
 
     this->SHT3data[SHT3_TEMPERATURE] = temperatureMeasured;
     this->SHT3data[SHT3_HUMIDITY] = humidityMeasured;
