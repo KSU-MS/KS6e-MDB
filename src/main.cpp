@@ -31,7 +31,7 @@ void loop()
 {
     if(updateTemps.check())
     {   
-        Serial.println("updated temp");
+        Serial.println("Updated Module #1 temps");
         Battery_Module.updateTemp();
         Battery_Module.updateMinTemp();
         Battery_Module.updateMaxTemp();
@@ -39,6 +39,6 @@ void loop()
     if(sendSPI.check())
     {
         Serial.println("sendSPI");
-        send_SPI(MODULE_4_A, MODULE_4_B, Battery_Module.getTempModuleHALF1(), Battery_Module.getTempModuleHALF2());
-    }
+        send_SPI(MODULE_1_A, MODULE_1_B, Battery_Module.getTempModuleHALF1(), Battery_Module.getTempModuleHALF2());
+    }   
 }
