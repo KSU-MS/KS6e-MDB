@@ -1,8 +1,8 @@
-
-
+#ifndef CAN_SPI_HANDLE
+#define CAN_SPI_HANDLE
 #include "TempSensor.h"
 #include "CAN_SPI_handle.h"
-
+#include <stdint.h>
 // ------------------------------------------------
 // Initializes the SPI pins, CAN, and CS
 void init_SPI()
@@ -68,7 +68,15 @@ void send_SPI(uint32_t id_1, uint32_t id_2, uint8_t buf_1[], uint8_t buf_2[])
 
     // Send the messages through CAN
     CAN.write(msg_1);
-    delay(10);
     CAN.write(msg_2);
 }
 
+void send_CAN(uint32_t id, void* buf,const size_t size)
+{
+    CAN_Frame msg;
+    msg.id = id;
+    msg.length = size;
+    memcpy(msg.data,buf,size);
+    CAN.write(msg);
+}
+#endif
