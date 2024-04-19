@@ -27,14 +27,14 @@ class sht_s
         const int humidPin;
         uint16_t tempReading;
         uint16_t humidReading;
-        float tempConversion(const float voltage)
+        int16_t tempConversion(const float voltage)
         {
             float tempCelsius = -66.875+218.75*voltage/5.0;
-            return tempCelsius;
+            return static_cast<int16_t>(tempCelsius*100);
         }
-        float humidConversion(const float voltage){
+        int16_t humidConversion(const float voltage){
             float humid = -12.5+125*voltage/5.0;
-            return humid;
+            return static_cast<int16_t>(humid*100);
         }
 };
 #endif

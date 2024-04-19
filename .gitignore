@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+.vscode/launch.json
+.vscode/launch.json
+.vscode/extensions.json
+.vscode/c_cpp_properties.json
+.pio/build/project.checksum
+.pio/build/micro/.sconsign39.dblite
+.pio/build/micro/.sconsign311.dblite
+.pio/build/micro/firmware.elf
+.pio/*

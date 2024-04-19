@@ -7,14 +7,13 @@
 */
  
 
-#include "TempSensor.h"
 #include "CAN_SPI_handle.h"
 #include "MDB_labels.h"
 #include <Metro.h>
 #include <sht_sensor.h>
-
+#include "analog_mux.h"
 sht_s joe = sht_s(A8,A9);
-
+analog_mux mux;
 Metro sendSPI = Metro(200);
 Metro updateTemps = Metro(50);
 
@@ -29,23 +28,27 @@ void setup()
     pinMode(MUXBPIN, OUTPUT);
     pinMode(MUXCPIN, OUTPUT);
     pinMode(MUXDPIN, OUTPUT);
-    //while (!Serial);
+    while (!Serial);
 }
 
 void loop()
 {
     if(updateTemps.check())
     {   
-        Serial.println("Updated Module #1 temps");
-        Battery_Module.updateTemp();
-        Battery_Module.updateMinTemp();
-        Battery_Module.updateMaxTemp();
+        // Serial.println("Updated Module #1 temps");
+        // Battery_Module.updateTemp();
+        // Battery_Module.updateMinTemp();
+        // Battery_Module.updateMaxTemp();
+        mux.read_all_channels();
         joe.update();
     }
     if(sendSPI.check())
     {
         Serial.println("sendSPI");
-        send_SPI(MODULE_1_A, MODULE_1_B, Battery_Module.getTempModuleHALF1(), Battery_Module.getTempModuleHALF2());
+        // send_SPI(MODULE_1_A, MODULE_1_B, Battery_Module.getTempModuleHALF1(), Battery_Module.getTempModuleHALF2());
+        mdb_data_packed_t data = mux.pack_data();
+        send_CAN(MODULE_1_A,&data.channelZeroToFive,sizeof(data.channelZeroToFive));
+        send_CAN(MODULE_1_B,&data.channelSixToEleven,sizeof(data.channelSixToEleven));
         send_CAN(MODULE_1_A+1,&joe.sht_data,sizeof(joe.sht_data));
     }   
 }
