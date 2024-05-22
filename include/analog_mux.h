@@ -16,13 +16,16 @@ public:
         {
             set_channel(i);
             readings[i] = analogRead(ANALOG_IN);
+            // Serial.print(i);
+            // Serial.print(" ");
+            // Serial.println(readings[i], HEX);
         }
     }
     mdb_data_packed_t pack_data()
     {
         mdb_data_packed_t data;
         data.channelZeroToFive = pack_10bit_data(&readings[0]);
-        data.channelZeroToFive = pack_10bit_data(&readings[6]);
+        data.channelSixToEleven = pack_10bit_data(&readings[6]);
         return data;
     }
     uint16_t readings[12] = {0};
@@ -33,11 +36,22 @@ private:
         uint64_t packed_data = 0;
         uint64_t mask = 0x3FF; // 10 bits mask
 
-        for (int i = 0; i < 6; ++i)
+        for (int i = 0; i < 6; i++)
         {
-            packed_data |= (static_cast<uint64_t>(data[i] & mask) << (i * 10));
-        }
+            // uint64_t joe = (static_cast<uint64_t>(data[i]) << (i * 10));
+            // uint32_t low = joe % 0xFFFFFFFF;
+            // uint32_t high = (joe >> 32) % 0xFFFFFFFF;
+            // Serial.print(data[i]);
+            // Serial.print(" ");
+            // Serial.println((low + high),HEX);
+            uint64_t joe = 0;
+            joe |= data[i];
 
+            packed_data |= (joe << (i * 10));
+        }
+        uint32_t low = packed_data % 0xFFFFFFFF;
+        uint32_t high = (packed_data >> 32) % 0xFFFFFFFF;
+        // Serial.println((low + high),HEX);
         return packed_data;
     }
     void set_channel(uint8_t channel)

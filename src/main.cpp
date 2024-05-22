@@ -19,7 +19,7 @@ Metro updateTemps = Metro(50);
 
 void setup()
 {
-    Serial.begin(9600);
+    // Serial.begin(9600);
     init_SPI();
     pinMode(A7, INPUT);
     pinMode(A8, INPUT);
@@ -28,7 +28,8 @@ void setup()
     pinMode(MUXBPIN, OUTPUT);
     pinMode(MUXCPIN, OUTPUT);
     pinMode(MUXDPIN, OUTPUT);
-    while (!Serial);
+    // pinMode(LED_BUILTIN,OUTPUT);
+    // while (!Serial);
 }
 
 void loop()
@@ -44,11 +45,12 @@ void loop()
     }
     if(sendSPI.check())
     {
-        Serial.println("sendSPI");
+        // Serial.println("sendSPI");
         // send_SPI(MODULE_1_A, MODULE_1_B, Battery_Module.getTempModuleHALF1(), Battery_Module.getTempModuleHALF2());
+        digitalWrite(LED_BUILTIN,!(digitalRead(LED_BUILTIN)));
         mdb_data_packed_t data = mux.pack_data();
-        send_CAN(MODULE_1_A,&data.channelZeroToFive,sizeof(data.channelZeroToFive));
-        send_CAN(MODULE_1_B,&data.channelSixToEleven,sizeof(data.channelSixToEleven));
-        send_CAN(MODULE_1_A+1,&joe.sht_data,sizeof(joe.sht_data));
+        send_CAN(MODULE_2_A,&data.channelZeroToFive,sizeof(data.channelZeroToFive));
+        send_CAN(MODULE_2_B,&data.channelSixToEleven,sizeof(data.channelSixToEleven));
+        send_CAN(MODULE_2_B+1,&joe.sht_data,sizeof(joe.sht_data));
     }   
 }
