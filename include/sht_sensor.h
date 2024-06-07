@@ -18,8 +18,12 @@ class sht_s
             float vt = 5.0 * static_cast<float>(tempReading)/1024;
             float vrh = 5.0 * static_cast<float>(humidReading)/1024;
             // convert voltages to temp/rh
-            sht_data.temperature = tempConversion(vt);
-            sht_data.humidity = humidConversion(vrh);
+            sht_data.temperature = static_cast<int16_t>(tempConversion(vt)*10);
+            sht_data.humidity = static_cast<int16_t>(humidConversion(vrh)*10);
+            Serial.print("temperature: ");
+            Serial.println(sht_data.temperature/10);
+            Serial.print("humidity: ");
+            Serial.println(sht_data.humidity/10);
         }
         sht_data_t sht_data;
     private:
