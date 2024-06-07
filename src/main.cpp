@@ -46,6 +46,6 @@ void loop()
     {
         Serial.println("sendSPI");
         send_SPI(MODULE_1_A, MODULE_1_B, Battery_Module.getTempModuleHALF1(), Battery_Module.getTempModuleHALF2());
-        send_CAN(MODULE_1_A+1,&joe.sht_data,sizeof(joe.sht_data));
+        send_CAN(MODULE_1_B+1,&joe.sht_data,sizeof(joe.sht_data));
     }   
 }
