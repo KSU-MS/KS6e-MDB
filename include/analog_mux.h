@@ -15,7 +15,9 @@ public:
         for (int i = 0; i < sizeof(readings) / sizeof(readings[0]); i++)
         {
             set_channel(i);
+            delay(1);
             readings[i] = analogRead(ANALOG_IN);
+            delay(1);
             // Serial.print(i);
             // Serial.print(" ");
             // Serial.println(readings[i], HEX);
@@ -29,7 +31,26 @@ public:
         return data;
     }
     uint16_t readings[12] = {0};
+    uint16_t* unpack_10bit_data(uint64_t packed_data) {
+        static uint16_t unpacked_data[6];
+        uint64_t mask = 0x3FF; // 10 bits mask
 
+        for (int i = 0; i < 6; i++) {
+            unpacked_data[i] = (packed_data >> (i * 10)) & mask;
+        }
+
+        return unpacked_data;
+    }
+
+    void print_unpacked_data(uint64_t packed_data) {
+        uint16_t* unpacked_data = unpack_10bit_data(packed_data);
+        for (int i = 0; i < 6; i++) {
+            Serial.print("Data[");
+            Serial.print(i);
+            Serial.print("]: ");
+            Serial.println(unpacked_data[i]);
+        }
+    }
 private:
     uint64_t pack_10bit_data(uint16_t *data)
     {
@@ -49,6 +70,7 @@ private:
 
             packed_data |= (joe << (i * 10));
         }
+        print_unpacked_data(packed_data);
         uint32_t low = packed_data % 0xFFFFFFFF;
         uint32_t high = (packed_data >> 32) % 0xFFFFFFFF;
         // Serial.println((low + high),HEX);

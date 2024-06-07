@@ -49,8 +49,8 @@ void loop()
         // send_SPI(MODULE_1_A, MODULE_1_B, Battery_Module.getTempModuleHALF1(), Battery_Module.getTempModuleHALF2());
         digitalWrite(LED_BUILTIN,!(digitalRead(LED_BUILTIN)));
         mdb_data_packed_t data = mux.pack_data();
-        send_CAN(MODULE_2_A,&data.channelZeroToFive,sizeof(data.channelZeroToFive));
-        send_CAN(MODULE_2_B,&data.channelSixToEleven,sizeof(data.channelSixToEleven));
-        send_CAN(MODULE_2_B+1,&joe.sht_data,sizeof(joe.sht_data));
+        send_CAN(MODULE_6_A,&data.channelZeroToFive,sizeof(data.channelZeroToFive));
+        send_CAN(MODULE_6_B,&data.channelSixToEleven,sizeof(data.channelSixToEleven));
+        send_CAN(MODULE_6_B+1,&joe.sht_data,sizeof(joe.sht_data));
     }   
 }
